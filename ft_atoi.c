@@ -6,29 +6,34 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 21:28:33 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/05 22:29:58 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/07 06:23:10 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "libft.h"
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
-	char	*cur;
 	int		sign;
 	int		result;
 
-	cur = (char *)str;
-	while (*cur == ' ')
-		cur++;
-	sign = (*cur == '-' ) ? -1 : 1;
-	cur = (*cur == '-' || *cur == '+') ? cur + 1 : cur;
-	while (*cur >= '0' && *cur <= 9)
+	result = 0;
+	sign = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '-')
 	{
-
-		result = result * 10 + *cur - 48;
-		cur++;
+		sign = -1;
+		str++;
 	}
-	result *= sign;
+	else if (*str == '+')
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + *str - 48;
+		str++;
+	}
+	if (sign)
+		result = -result;
 	return (result);
 }
