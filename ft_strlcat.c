@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncat.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 22:51:33 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/08 17:56:53 by mwilk            ###   ########.fr       */
+/*   Created: 2014/11/08 21:23:13 by mwilk             #+#    #+#             */
+/*   Updated: 2014/11/08 21:33:05 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
-char	*ft_strncat(char *dst, const char *src, size_t n)
+size_t ft_strlcat(char *dst, const char *src, size_t size)
 {
+	char		*dst_cp;
+	const char	*src_cp;
 	size_t		i;
-	size_t		j;
-
-	i = ft_strlen(dst);
-	j = 0;
-	if (dst == NULL || src == NULL)
-		return (NULL);
-	if (src[j] && j <= n)
-		while (src[j] && j < n)
+	size_t		dlen;
+    
+	dst_cp = dst;
+	src_cp = src;
+	i = size;
+	while (i-- != 0 && *dst_cp != '\0')
+		++dst_cp;
+	dlen = dst_cp - dst;
+	i = size - dlen;
+	if (i == 0)
+        return (dlen + ft_strlen(src_cp));
+	while (*src_cp != '\0')
+	{
+		if (i != 1)
 		{
-			dst[i + j] = src[j];
-			j++;
+			*dst_cp++ = *src_cp;
+			--i;
 		}
-	dst[i + j] = '\0';
-	return (dst);
+		++src_cp;
+	}
+	*dst_cp = '\0';
+	return (dlen + (src_cp - src));
 }

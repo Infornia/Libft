@@ -6,11 +6,11 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/09/16 16:36:02 by mwilk             #+#    #+#             */
-/*   Updated: 2014/09/16 16:55:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/08 14:17:06 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
 int		ft_putnbr(int nb)
 {

@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/05 13:47:57 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/05 13:52:00 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/08 14:12:04 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int		ft_isspace(int c)
 {
-	c = (unsigned char) c;
+	c = (unsigned char)c;
 	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
 			|| c == ' ')
 		return (1);

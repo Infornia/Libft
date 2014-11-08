@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/04 19:07:07 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/08 18:22:04 by mwilk            ###   ########.fr       */
+/*   Created: 2014/11/08 18:51:54 by mwilk             #+#    #+#             */
+/*   Updated: 2014/11/08 20:13:54 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strcpy(char *dst, const char *src)
+void	*ft_memcpy_rev(void *dst, const void *src, size_t len)
 {
+	char	*d;
+	char	*s;
 	size_t	i;
 
-	i = 0;
-	while (src[i])
+	d = (char *)dst;
+	s = (char *)src;
+	i = len;
+	while (i > 0)
 	{
-		dst[i] = src[i];
-		i++;
+		d[i - 1] = s[i - 1];
+		i--;
 	}
-	dst[i] = '\0';
+	return (dst);
+}
+
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	if (dst == NULL || src == NULL)
+		return (NULL);
+	if (src == dst)
+		return (dst);
+	if (dst < src)
+		ft_memcpy(dst, src, len);
+	else 
+		ft_memcpy_rev(dst, src, len);
 	return (dst);
 }
