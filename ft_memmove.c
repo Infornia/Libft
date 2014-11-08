@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/08 18:51:54 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/08 20:13:54 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/08 22:24:29 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 		return (dst);
 	if (dst < src)
 		ft_memcpy(dst, src, len);
-	else 
+	else
 		ft_memcpy_rev(dst, src, len);
 	return (dst);
 }
