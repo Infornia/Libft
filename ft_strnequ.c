@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 22:43:47 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/09 23:01:56 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/09 23:04:48 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,8 @@
 int		ft_strnequ(const char *s1, const char *s2, size_t n)
 {
 	if (s1 == NULL && s2 == NULL)
-		return (0);
+		return (1);
 	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	return (!ft_strncmp(s1, s2, n))
-
+		return (0);
+	return (!ft_strncmp(s1, s2, n));
 }
