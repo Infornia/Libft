@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/09 20:13:25 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/10 18:29:45 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_isdigit(int c);
 int		ft_isgraph(int c);
 int		ft_isprint(int c);
 int		ft_isspace(int c);
+char	*ft_itoa(int c);
 void	*ft_memalloc(size_t size);
 void	*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
@@ -46,10 +47,13 @@ void	ft_strdel(char **as);
 char	*ft_strdup(const char *s1);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strmap(const char *s, char (*f)(char));
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strnew(size_t size);
+char	**ft_strsplit(const char *s, char c);
 char	*ft_strstr(const char *s1, const char *s2);
+char	*ft_strsub(const char *s, unsigned int start, size_t len);
 size_t	ft_strlcat(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strncat(char *dst, const char *src, size_t n);
