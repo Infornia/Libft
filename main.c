@@ -3,34 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: student@42 <@student.42.fr>                +#+  +:+       +#+        */
+/*   By: Pierre <Pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2014/11/09 18:28:37 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/08 11:21:01 by Pierre           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
- *
- *	Salut la nouvelle promo merci de lire README.md et bon courage tout le monde
- *
- *	https://github.com/QuentinPerez
- *	https://github.com/mfontain
- *	https://github.com/alex8092
- *	https://github.com/gabtoubl
- *	https://github.com/soyel
- *	https://github.com/stherman
- *
- */
-
-/*
- ** author : qperez
- ** HardCore + strtrim + Fixes: mfontain
- ** Fixes strsplit, strequ: gabtoubl
- ** Fixes strsplit, strjoin, strsub, strtrim, itoa, strequ, strnequ: stherman
- **
- ** Any segfault ? Probably caused by a NULL test. ex : ft_memset(NULL, 0, 0);
- */
 
 #include <string.h>
 #include <stdio.h>
@@ -39,7 +17,7 @@
 #include <ctype.h>
 #include <time.h>
 
-#include <libft.h> /* compile with -I./ */
+#include "../libft.h"
 
 #define D_ERROR	{ printf("Error Line %d, Funct %s ", __LINE__ - 1, __func__); return (0); }
 #define D_ADD_HCTEST(name)	uf_add_test(test, "\033[33m"#name"\033[0m", uf_test_##name);
@@ -47,6 +25,7 @@
 #define D_TEST	60
 #define RANDT	512
 #define LONG	10000
+#define BOOL(x) (x == 0) ? 0 : 1
 
 int	uf_test_strtrim(void);
 int	uf_test_strsplit(void);
@@ -108,7 +87,7 @@ typedef struct	s_test
 void				uf_add_test(t_test *test, const char *name, int (*funct)(void))
 {
 	static int		i = 0;
-    
+
 	test[i].name = name;
 	test[i].funct = funct;
 	test[i].set = true;
@@ -121,19 +100,14 @@ int					main(int argc, const char **argv)
 {
 	int				i;
 	t_test			test[D_TEST];
-    
+
 	srand(time(NULL));
-	printf("[\033[33mYellow Tests\033[0m] are Hardcore\n");
 	i = 0;
 	memset(test, 0, D_TEST);
-    /*
-     * Si vous n'avez pas la fonction il suffit de mettre en commentaire
-     */
-    /*
-     * Example : vous n'avez pas memset vous commentez
-     * // #define D_MEMSET
-     * // D_ADD_TEST(...)
-     */
+	/*
+	 * Si vous n'avez pas la fonction il suffit de mettre en commentaire
+	 */
+	printf("\n[\033[33mYellow\033[m tests are hardcore]\n\n");
 #define	D_MEMSET
 	D_ADD_HCTEST(memset);
 #define	D_BZERO
@@ -151,17 +125,17 @@ int					main(int argc, const char **argv)
 #define	D_STRLEN
 	D_ADD_TEST(strlen);
 #define	D_STRDUP
-	D_ADD_TEST(strdup);
+	D_ADD_HCTEST(strdup);
 #define	D_STRCPY
 	D_ADD_HCTEST(strcpy);
 #define	D_STRNCPY
 	D_ADD_HCTEST(strncpy);
 #define	D_STRCAT
-	D_ADD_TEST(strcat);
+	D_ADD_HCTEST(strcat);
 #define	D_STRNCAT
-	D_ADD_TEST(strncat);
+	D_ADD_HCTEST(strncat);
 #define	D_STRLCAT
-	D_ADD_TEST(strlcat);
+	D_ADD_HCTEST(strlcat);
 #define	D_STRCHR
 	D_ADD_TEST(strchr);
 #define	D_STRRCHR
@@ -171,9 +145,9 @@ int					main(int argc, const char **argv)
 #define	D_STRNSTR
 	D_ADD_TEST(strnstr);
 #define	D_STRCMP
-	D_ADD_TEST(strcmp);
+	D_ADD_HCTEST(strcmp);
 #define	D_STRNCMP
-	D_ADD_TEST(strncmp);
+	D_ADD_HCTEST(strncmp);
 #define	D_ATOI
 	D_ADD_HCTEST(atoi);
 #define	D_ISALPHA
@@ -207,31 +181,31 @@ int					main(int argc, const char **argv)
 #define	D_STRMAPI
 	D_ADD_TEST(strmapi);
 #define	D_STREQU
-	D_ADD_TEST(strequ);
+	D_ADD_HCTEST(strequ);
 #define	D_STRNEQU
-	D_ADD_TEST(strnequ);
+	D_ADD_HCTEST(strnequ);
 #define	D_STRSUB
 	D_ADD_TEST(strsub);
 #define	D_STRJOIN
 	D_ADD_TEST(strjoin);
-#define	D_STRSPLIT
-	D_ADD_TEST(strsplit);
-#define	D_ITOA
-	D_ADD_TEST(itoa);
+//#define	D_STRSPLIT
+//	D_ADD_TEST(strsplit);
+//#define	D_ITOA
+//	D_ADD_HCTEST(itoa);
 #define	D_STRTRIM
 	D_ADD_TEST(strtrim);
-#define	D_LSTNEW
-	D_ADD_TEST(lstnew);
-#define	D_LSTDELONE
-	D_ADD_TEST(lstdelone);
-#define	D_LSTDEL
-	D_ADD_TEST(lstdel);
-#define	D_LSTADD
-	D_ADD_TEST(lstadd);
-#define	D_LSTITER
-	D_ADD_TEST(lstiter);
-#define D_LSTMAP
-	D_ADD_TEST(lstmap);
+//#define	D_LSTNEW
+//	D_ADD_TEST(lstnew);
+//#define	D_LSTDELONE
+//	D_ADD_TEST(lstdelone);
+//#define	D_LSTDEL
+//	D_ADD_TEST(lstdel);
+//#define	D_LSTADD
+//	D_ADD_TEST(lstadd);
+//#define	D_LSTITER
+//	D_ADD_TEST(lstiter);
+//#define D_LSTMAP
+//	D_ADD_TEST(lstmap);
 	while (test[i].set == true)
 	{
 		printf("Test [%s] : ", test[i].name);
@@ -252,19 +226,15 @@ void	uf_del_callback(void *d, size_t s)
 	(void)s;
 }
 
-/*
- ** Thx pmotte for the test
- */
-
 #ifdef  D_LSTMAP
 
 t_list		*uf_testmap(t_list *elem)
 {
 	t_list	*new;
 	char	*content;
-	int		i;
-    
-	content = ft_strdup((char *)(elem->content));
+	size_t	i;
+
+	content = strdup((char *)(elem->content));
 	i = 0;
 	while (i < ft_strlen(content))
 	{
@@ -278,11 +248,11 @@ t_list		*uf_testmap(t_list *elem)
 
 int					uf_test_lstmap(void)
 {
-    t_list			*lst_initial;
-    t_list			*lst;
-    char			*content;
-    t_list			*(*f)(t_list *);
-    
+	t_list			*lst_initial;
+	t_list			*lst;
+	char			*content;
+	t_list			*(*f)(t_list *);
+
 	content = "toto";
 	lst_initial = ft_lstnew((void const *) content, 5);
 	content = "tata";
@@ -292,12 +262,12 @@ int					uf_test_lstmap(void)
 	f = &uf_testmap;
 	lst = ft_lstmap(lst_initial, f);
 	if (!strcmp((const char *) lst->content, (const char *) lst_initial->content) || strcmp((const char *) lst->content, "upup"))
-        D_ERROR;
-    if (!strcmp((const char *) lst->next->content, (const char *) lst_initial->next->content) || strcmp((const char *) lst->next->content, "ubub"))
-        D_ERROR;
-    if (!strcmp((const char *) lst->next->next->content, (const char *) lst_initial->next->next->content) || strcmp((const char *) lst->next->next->content, "uvuv"))
-        D_ERROR;
-    return (1);
+		D_ERROR;
+	if (!strcmp((const char *) lst->next->content, (const char *) lst_initial->next->content) || strcmp((const char *) lst->next->content, "ubub"))
+		D_ERROR;
+	if (!strcmp((const char *) lst->next->next->content, (const char *) lst_initial->next->next->content) || strcmp((const char *) lst->next->next->content, "uvuv"))
+		D_ERROR;
+	return (1);
 }
 #endif
 
@@ -312,7 +282,7 @@ int					uf_test_lstiter(void)
 	t_list	*begin;
 	size_t	v;
 	size_t	w;
-    
+
 	v = 1;
 	w = 2;
 	begin = ft_lstnew(&v, sizeof(size_t));
@@ -335,7 +305,7 @@ int					uf_test_lstadd(void)
 	t_list	*add;
 	t_list	*tmp;
 	size_t	v;
-    
+
 	v = 1;
 	begin = ft_lstnew(&v, sizeof(size_t));
 	tmp = begin;
@@ -356,7 +326,7 @@ int					uf_test_lstdelone(void)
 {
 	t_list	*begin;
 	size_t	v;
-    
+
 	v = 1;
 	begin = ft_lstnew(&v, sizeof(void *));
 	begin->next = ft_lstnew(&v, sizeof(void *));
@@ -379,7 +349,7 @@ int					uf_test_lstdel(void)
 {
 	t_list	*begin;
 	size_t	v;
-    
+
 	v = 1;
 	begin = ft_lstnew(&v, sizeof(void *));
 	begin->next = ft_lstnew(&v, sizeof(void *));
@@ -396,7 +366,7 @@ int					uf_test_lstnew(void)
 {
 	t_list	*begin;
 	size_t	v;
-    
+
 	v = 1;
 	begin = ft_lstnew(NULL, 36);
 	if (begin != 0 && (begin->content_size != 0 || begin->content != NULL))
@@ -422,7 +392,7 @@ int					uf_test_lstnew(void)
 int					uf_free_tab(void **tab)
 {
 	unsigned int	i;
-    
+
 	if (tab == NULL)
 		return (0);
 	i = 0;
@@ -442,35 +412,35 @@ int					uf_test_strtrim(void)
 	char			str2[] = "Bonjour";
 	char			str3[] = "  \t\t\t   ";
 	char			*r;
-    
+
 	ft_strtrim(NULL);
 	r = ft_strtrim(str);
 	if (strcmp(r, "Bon\t \njour"))
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"  \t    \t\nBon\t \njour\t\n  \n     \").\nExpected ret = \"Bon\t \njour\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, r);
+				but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, r);
 		free(r);
 		return (0);
 	}
 	free(r);
 	r = ft_strtrim(str2);
-    if (strcmp(r, "Bonjour") || (str2 == r))
-    {
-        printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"Bonjour\").\nExpected ret = \"Bonjour\" and differents pointers\
-			   but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str2, r);
+	if (strcmp(r, "Bonjour") || (str2 == r))
+	{
+		printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"Bonjour\").\nExpected ret = \"Bonjour\" and differents pointers\
+				but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str2, r);
 		free(r);
-        return (0);
-    }
-    free(r);
+		return (0);
+	}
+	free(r);
 	r = ft_strtrim(str3);
-    if (strcmp(r, "") || (str3 == r))
-    {
-        printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"  \t\t\t  \").\nExpected ret = \"\" and different\
-               s pointers but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str3, r);
+	if (strcmp(r, "") || (str3 == r))
+	{
+		printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"  \t\t\t  \").\nExpected ret = \"\" and different\
+				s pointers but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str3, r);
 		free(r);
-        return (0);
-    }
-    free(r);
+		return (0);
+	}
+	free(r);
 	return (1);
 }
 #endif
@@ -479,14 +449,14 @@ int					uf_test_strtrim(void)
 int					uf_test_strsplit(void)
 {
 	char			**ret;
-    
+
 	ft_strsplit(NULL, 0);
 	ft_strsplit(NULL, 'a');
 	ret = ft_strsplit("", '*');
 	if (ret == NULL || ret[0] != NULL)
 	{
 		printf("Error Line %d, Funct %s : \
-			   \nYour function has return NULL or the first pointer in your tab is NULL\n", __LINE__ - 2, __func__);
+				\nYour function has return NULL or the first pointer in your tab is NULL\n", __LINE__ - 2, __func__);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -495,7 +465,7 @@ int					uf_test_strsplit(void)
 	if (ret == NULL || ret[0] != NULL)
 	{
 		printf("Error Line %d, Funct %s : \
-			   \nYour function has return NULL or the first pointer in your tab is NULL\n", __LINE__ - 2, __func__);
+				\nYour function has return NULL or the first pointer in your tab is NULL\n", __LINE__ - 2, __func__);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -508,7 +478,7 @@ int					uf_test_strsplit(void)
 	if (ret[1] != NULL && strcmp(ret[0], "hello") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"hello\", '*').\nExpected tab[0] = \"hello\" and tab[1] = NULL \
-			   but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
+				but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -521,7 +491,7 @@ int					uf_test_strsplit(void)
 	if (ret[1] != NULL && strcmp(ret[0], "hello") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"*hello\", '*').\nExpected tab[0] = \"hello\" and tab[1] = NULL \
-			   but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
+				but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -534,7 +504,7 @@ int					uf_test_strsplit(void)
 	if (ret[1] != NULL && strcmp(ret[0], "hello") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"*hello*\", '*').\nExpected tab[0] = \"hello\" and tab[1] = NULL \
-			   but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
+				but have tab[0] = \"%s\" and tab[1] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -547,7 +517,7 @@ int					uf_test_strsplit(void)
 	if (ret[2] != NULL && strcmp(ret[0], "hel") != 0 && strcmp(ret[1], "lo") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"*hel*lo*\", '*').\nExpected tab[0] = \"hel\", tab[1] = \"lo\" and tab[2] = NULL \
-			   but have tab[0] = \"%s\", tab[1] = \"%s\" and tab[2] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2]);
+				but have tab[0] = \"%s\", tab[1] = \"%s\" and tab[2] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -558,10 +528,10 @@ int					uf_test_strsplit(void)
 	}
 	ret = ft_strsplit("*hel*lo*f", '*');
 	if (ret[3] != NULL && strcmp(ret[0], "hel") != 0 && strcmp(ret[1], "lo") != 0 &&
-		strcmp(ret[2], "f") != 0)
+			strcmp(ret[2], "f") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"*hel*lo*f\", '*').\nExpected tab[0] = \"hel\", tab[1] = \"lo\", tab[2] = \"f\" and tab[3] = NULL \
-			   but have tab[0] = \"%s\", tab[1] = \"%s\", tab[2] = \"%s\" and tab[3] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2], ret[3]);
+				but have tab[0] = \"%s\", tab[1] = \"%s\", tab[2] = \"%s\" and tab[3] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2], ret[3]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -572,10 +542,10 @@ int					uf_test_strsplit(void)
 	}
 	ret = ft_strsplit("g*hel*lo*f", '*');
 	if (ret[4] != NULL && strcmp(ret[0], "g") != 0 && strcmp(ret[1], "hel") != 0 &&
-		strcmp(ret[2], "lo") != 0 && strcmp(ret[3], "f") != 0)
+			strcmp(ret[2], "lo") != 0 && strcmp(ret[3], "f") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"g*hel*lo*f\", '*').\nExpected tab[0] = \"g\", tab[1] = \"hel\", tab[2] = \"lo\", tab[3] = \"f\" and tab[4] = NULL \
-			   but have tab[0] = \"%s\", tab[1] = \"%s\", tab[2] = \"%s\", tab[3] = \"%s\" and tab[4] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2], ret[3], ret[4]);
+				but have tab[0] = \"%s\", tab[1] = \"%s\", tab[2] = \"%s\", tab[3] = \"%s\" and tab[4] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2], ret[3], ret[4]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -588,7 +558,7 @@ int					uf_test_strsplit(void)
 	if (ret[2] != NULL && strcmp(ret[0], "hel") != 0 && strcmp(ret[1], "lo") != 0)
 	{
 		printf("Error Line %d, Funct %s : \n\033[31mft_strsplit(\"*hel****lo*\", '*').\nExpected tab[0] = \"hel\", tab[1] = \"lo\" and tab[2] = NULL \
-			   but have tab[0] = \"%s\", tab[1] = \"%s\" and tab[2] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2]);
+				but have tab[0] = \"%s\", tab[1] = \"%s\" and tab[2] = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret[0], ret[1], ret[2]);
 		uf_free_tab((void **)ret);
 		return (0);
 	}
@@ -605,7 +575,7 @@ int					uf_test_strsplit(void)
 int				uf_test_strjoin(void)
 {
 	char		*ret;
-    
+
 	ft_strjoin(NULL, NULL);
 	ft_strjoin(NULL, "");
 	ft_strjoin("", NULL);
@@ -613,34 +583,34 @@ int				uf_test_strjoin(void)
 	if (strcmp(ret, "Hello boys") != 0)
 	{
 		D_ERROR
-		free(ret);
+			free(ret);
 		return (0);
 	}
 	free(ret);
 	ret = ft_strjoin("", "boys");
-    if (strcmp(ret, "boys") != 0)
-    {
+	if (strcmp(ret, "boys") != 0)
+	{
 		D_ERROR
-        free(ret);
-        return (0);
-    }
-    free(ret);
+			free(ret);
+		return (0);
+	}
+	free(ret);
 	ret = ft_strjoin("Hello ", "");
-    if (strcmp(ret, "Hello ") != 0)
-    {
+	if (strcmp(ret, "Hello ") != 0)
+	{
 		D_ERROR
-        free(ret);
-        return (0);
-    }
-    free(ret);
+			free(ret);
+		return (0);
+	}
+	free(ret);
 	ret = ft_strjoin("", "");
-    if (strcmp(ret, "") != 0)
-    {
+	if (strcmp(ret, "") != 0)
+	{
 		D_ERROR
-        free(ret);
-        return (0);
-    }
-    free(ret);
+			free(ret);
+		return (0);
+	}
+	free(ret);
 	return (1);
 }
 #endif
@@ -650,7 +620,7 @@ int				uf_test_strsub(void)
 {
 	char		*ret;
 	char		str[] = "*Hello*";
-    
+
 	ft_strsub(NULL, 0, 0);
 	ft_strsub(NULL, 1, 0);
 	ft_strsub(NULL, 1, 1);
@@ -658,15 +628,43 @@ int				uf_test_strsub(void)
 	ret = ft_strsub(str, 1, 5);
 	if (strcmp(ret, "Hello") != 0)
 	{
-		D_ERROR
+		free(ret);
+		D_ERROR;
 		return (0);
 	}
+	free(ret);
 	ret = ft_strsub(str, 3, 1);
-    if (strcmp(ret, "l") != 0)
-    {
-		D_ERROR
-        return (0);
-    }
+	if (strcmp(ret, "l") != 0)
+	{
+		free(ret);
+		D_ERROR;
+		return (0);
+	}
+	free(ret);
+	ret = ft_strsub(str, 3, 0);
+	if (strcmp(ret, "") != 0)
+	{
+		free(ret);
+		D_ERROR;
+		return (0);
+	}
+	free(ret);
+	ret = ft_strsub(str, 0, 3);
+	if (strcmp(ret, "*He") != 0)
+	{
+		free(ret);
+		D_ERROR;
+		return (0);
+	}
+	free(ret);
+	ret = ft_strsub(str, 3, 4);
+	if (strcmp(ret, "llo*") != 0)
+	{
+		free(ret);
+		D_ERROR;
+		return (0);
+	}
+	free(ret);
 	return (1);
 }
 #endif
@@ -694,47 +692,62 @@ char			uf_strmapi_callback(unsigned int i, char s)
 #ifdef	D_ITOA
 int				uf_test_itoa(void)
 {
-	char		*ret;
+	char		*ret, ret2[15];
+	int			i, j;
 	if (strcmp(ret = ft_itoa(0), "0") != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_itoa(0).\nExpected ret = \"0\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_itoa(0).\nExpected ret = \"0\" \
+				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);
 	}
 	free(ret);
 	if (strcmp(ret = ft_itoa(-123), "-123") != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_itoa(-123).\nExpected ret = \"-123\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_itoa(-123).\nExpected ret = \"-123\" \
+				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);
 	}
 	free(ret);
 	if (strcmp(ret = ft_itoa(123), "123") != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_itoa(123).\nExpected ret = \"123\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_itoa(123).\nExpected ret = \"123\" \
+				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);
 	}
 	free(ret);
 	if (strcmp(ret = ft_itoa(-2147483648), "-2147483648") != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_itoa(-2147483648).\nExpected ret = \"-2147483648\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_itoa(-2147483648).\nExpected ret = \"-2147483648\" \
+				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);
 	}
 	free(ret);
 	if (strcmp(ret = ft_itoa(2147483647), "2147483647") != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_itoa(2147483647).\nExpected ret = \"2147483647\" \
-			   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_itoa(2147483647).\nExpected ret = \"2147483647\" \
+				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);
 	}
 	free(ret);
+	i = 0;
+	while (i < RANDT)
+	{
+		j = (int)rand();
+		ret = ft_itoa(j);
+		sprintf(ret2, "%d", j);
+		if (strcmp(ret, ret2) != 0)
+		{
+			free(ret);
+			D_ERROR;
+		}
+		free(ret);
+		i++;
+	}
 	return (1);
 }
 #endif
@@ -742,42 +755,68 @@ int				uf_test_itoa(void)
 #ifdef	D_STRNEQU
 int				uf_test_strnequ(void)
 {
-	int			ret;
-    
+	int		ret, i, j, k, n;
+	char	tab1[50], tab2[50];
+
 	ft_strnequ(NULL, NULL, 0);
 	ft_strnequ(NULL, NULL, 1);
 	ft_strnequ(NULL, "", 1);
 	ft_strnequ("", NULL, 1);
-	ret = 0;
-	if ((ret = ft_strnequ("abc", "abc", 2)) != 1)
+    if ((ret = ft_strnequ("abc", "abc", 2)) != 1)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strnequ(\"abc\", \"abc\", 2).\nExpected ret = \"1\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strnequ(\"abc\", \"abc\", 2).\nExpected ret = \"1\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strnequ("cba", "abc", 2)) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strnequ(\"cba\", \"abc\", 2).\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strnequ(\"cba\", \"abc\", 2).\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strnequ("abc", "cba", 2)) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strnequ(\"abc\", \"cba\", 2).\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strnequ(\"abc\", \"cba\", 2).\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strnequ("abc", "abd", 2)) != 1)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strnequ(\"abc\", \"abd\", 2).\nExpected ret = \"1\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strnequ(\"abc\", \"abd\", 2).\nExpected ret = \"1\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strnequ("", "", 3)) != 1)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strnequ(\"\", \"\", 3).\nExpected ret = \"1\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strnequ(\"\", \"\", 3).\nExpected ret = \"1\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
+	}
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = rand() % 49;
+			while (j < n)
+				tab1[j++] = (char)rand();
+			tab1[j] = '\0';
+			n = rand() % 49;
+			j = 0;
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			n = rand() % 50;
+			if (BOOL(strncmp(tab1, tab2, n)) == ft_strnequ(tab1, tab2, n))
+				D_ERROR;
+			memcpy(tab1, tab2, 50);
+			if (ft_strnequ(tab1, tab2, n) == strncmp(tab1, tab2, n))
+				D_ERROR;
+			++i;
+		}
+		++k;
 	}
 	return (1);
 }
@@ -786,51 +825,76 @@ int				uf_test_strnequ(void)
 #ifdef	D_STREQU
 int				uf_test_strequ(void)
 {
-	int			ret;
-	char		*str;
-    
+	int			ret, i, j, k, n;
+	char		*str, tab1[50], tab2[50];
+
 	ft_strequ(NULL, NULL);
 	ft_strequ("", NULL);
 	ft_strequ(NULL, "");
-	ret = 0;
-	str = strdup("abc"); /* FIX un faux OK si l'user a mis "if s1 == s2 return 1;" */
+    str = strdup("abc");
 	if ((ret = ft_strequ(str, "abc")) != 1)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"abc\", \"abc\").\nExpected ret = \"1\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strequ(\"abc\", \"abc\").\nExpected ret = \"1\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		free(str);
 		return (0);
 	}
 	free(str);
 	if ((ret = ft_strequ("cba", "abc")) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"cba\", \"abc\").\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strequ(\"cba\", \"abc\").\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strequ("abc", "cba")) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"abc\", \"cba\").\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strequ(\"abc\", \"cba\").\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strequ("", "")) != 1)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"\", \"\").\nExpected ret = \"1\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strequ(\"\", \"\").\nExpected ret = \"1\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strequ("abc", "abcd")) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"abc\", \"abcd\").\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\n\033[31mft_strequ(\"abc\", \"abcd\").\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
 	}
 	if ((ret = ft_strequ("abcd", "abc")) != 0)
 	{
-		printf("Error Line %d, Funct %s : \n\033[31mft_strequ(\"abcd\", \"abc\").\nExpected ret = \"0\" \
-			   but have ret = \"%d\"\033[0m\n", __LINE__ - 2, __func__, ret);
+		printf("\033[31mft_strequ(\"abcd\", \"abc\").\nExpected ret = \"0\" \
+				but have ret = \"%d\"\033[0m\n", ret);
 		return (0);
+	}
+
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = rand() % 49;
+			while (j < n)
+				tab1[j++] = (char)rand();
+			tab1[j] = '\0';
+			n = rand() % 49;
+			j = 0;
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			if (BOOL(strcmp(tab1, tab2)) == ft_strequ(tab1, tab2))
+				D_ERROR;
+			memcpy(tab1, tab2, 50);
+			if (ft_strequ(tab1, tab2) == strcmp(tab1, tab2))
+				D_ERROR;
+			++i;
+		}
+		++k;
 	}
 	return (1);
 }
@@ -842,7 +906,7 @@ int				uf_test_strmapi(void)
 	char		str[] = "Hello";
 	char		empty[] = "";
 	char		*ret;
-    
+
 	ft_strmapi(NULL, NULL);
 	ft_strmapi(empty, NULL);
 	ret = ft_strmapi(str, uf_strmapi_callback);
@@ -862,7 +926,7 @@ int				uf_test_strmap(void)
 {
 	char		str[] = "Hello";
 	char		*ret;
-    
+
 	ft_strmap(NULL, NULL);
 	ft_strmap("", NULL);
 	ret = ft_strmap(str, uf_strmap_callback);
@@ -881,13 +945,13 @@ int				uf_test_strmap(void)
 int				uf_test_striteri(void)
 {
 	char		str[] = "Hello";
-    
+
 	ft_striteri(NULL, NULL);
 	ft_striteri(str, NULL);
 	ft_striteri(str, uf_striteri_callback);
 	if (strcmp(str, "Hfnos") != 0)
 		D_ERROR
-        return (1);
+			return (1);
 }
 #endif
 
@@ -895,13 +959,13 @@ int				uf_test_striteri(void)
 int				uf_test_striter(void)
 {
 	char		str[] = "Hello";
-    
+
 	ft_striter(NULL, NULL);
 	ft_striter(str, NULL);
 	ft_striter(str, uf_striter_callback);
 	if (strcmp(str, "Ifmmp") != 0)
 		D_ERROR
-        return (1);
+			return (1);
 }
 #endif
 
@@ -910,15 +974,28 @@ int				uf_test_strclr(void)
 {
 	int			i;
 	char		str[] = "Hello";
-    
+
 	i = 0;
 	ft_strclr(NULL);
 	ft_strclr(str);
 	while (i < 6)
 	{
 		if (str[i] != '\0')
-			D_ERROR
-            i = i + 1;
+			D_ERROR;
+		str[i++] = 'z';
+	}
+	str[3] = '\0';
+	ft_strclr(str);
+	i = 0;
+	while (i < 4)
+	{
+		if (str[i++] != '\0')
+			D_ERROR;
+	}
+	while (i < 6)
+	{
+		if (str[i++] != 'z')
+			D_ERROR;
 	}
 	return (1);
 }
@@ -928,17 +1005,17 @@ int				uf_test_strclr(void)
 int				uf_test_strdel(void)
 {
 	char		*ret;
-    
+
 	ft_strdel(NULL);
 	ret = ft_strnew(4);
 	ft_strdel(&ret);
 	if (ret != NULL)
 		D_ERROR
-        ret = ft_strnew(0);
+			ret = ft_strnew(0);
 	ft_strdel(&ret);
 	if (ret != NULL)
 		D_ERROR
-        return (1);
+			return (1);
 }
 #endif
 
@@ -947,16 +1024,15 @@ int				uf_test_strnew(void)
 {
 	char		*ret;
 	int			i;
-    
+
 	i = 0;
 	ret = ft_strnew(4);
 	if (ret != NULL)
 	{
 		while (i < 5)
 		{
-			if (ret[i] != '\0')
-				D_ERROR
-                i = i + 1;
+			if (ret[i++] != '\0')
+				D_ERROR;
 		}
 	}
 	return (1);
@@ -967,12 +1043,23 @@ int				uf_test_strnew(void)
 int				uf_test_memalloc_and_del(void)
 {
 	void		*ret;
-    
-	ret = ft_memalloc(4);
-	ft_memdel(&ret);
-	if (ret != NULL)
-		D_ERROR
-        return (1);
+	int			i;
+
+	ret = ft_memalloc(5);
+	if (ret)
+	{
+		i = 0;
+		while (i < 5)
+		{	
+			if (((char *)ret)[i++])
+				D_ERROR;
+		}
+		ft_memdel(&ret);
+		if (ret)
+			D_ERROR;
+	}
+	ft_memdel(NULL);
+	return (1);
 }
 #endif
 
@@ -980,13 +1067,13 @@ int				uf_test_memalloc_and_del(void)
 int				uf_test_tolower(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (tolower(i) != ft_tolower(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -996,13 +1083,13 @@ int				uf_test_tolower(void)
 int				uf_test_toupper(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (toupper(i) != ft_toupper(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -1012,13 +1099,13 @@ int				uf_test_toupper(void)
 int				uf_test_isprint(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (isprint(i) != ft_isprint(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -1028,13 +1115,13 @@ int				uf_test_isprint(void)
 int				uf_test_isascii(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (isascii(i) != ft_isascii(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -1044,13 +1131,13 @@ int				uf_test_isascii(void)
 int				uf_test_isalnum(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (isalnum(i) != ft_isalnum(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -1060,13 +1147,13 @@ int				uf_test_isalnum(void)
 int				uf_test_isdigit(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (isdigit(i) != ft_isdigit(i))
 			D_ERROR
-            i = i + 1;
+				i = i + 1;
 	}
 	return (1);
 }
@@ -1076,13 +1163,13 @@ int				uf_test_isdigit(void)
 int				uf_test_isalpha(void)
 {
 	int			i;
-    
+
 	i = -300;
 	while (i < 300)
 	{
 		if (isalpha(i) != ft_isalpha(i))
-			D_ERROR
-            i = i + 1;
+			D_ERROR;
+		i = i + 1;
 	}
 	return (1);
 }
@@ -1093,34 +1180,34 @@ int				uf_test_atoi(void)
 {
 	size_t		i, j;
 	char		str[12] = {0};
-    
+
 	if (atoi("\n\v\t\r\f -123") != ft_atoi("\n\v\t\r\f -123"))
-		D_ERROR
-        if (atoi("12-3") != ft_atoi("12-3"))
-            D_ERROR
-            if (atoi("-+123") != ft_atoi("-+123"))
-                D_ERROR
-                if (atoi("a123") != ft_atoi("a123"))
-                    D_ERROR
-                    if (atoi("123a") != ft_atoi("123a"))
-                        D_ERROR
-                        if (atoi("123") != ft_atoi("123"))
-                            D_ERROR
-                            if (atoi("-123") != ft_atoi("-123"))
-                                D_ERROR
-                                if (atoi("+123") != ft_atoi("+123"))
-                                    D_ERROR
-                                    if (atoi(" - 123") != ft_atoi(" - 123"))
-                                        D_ERROR
-                                        if (atoi("\t -123") != ft_atoi("\t -123"))
-                                            D_ERROR
-                                            if (atoi("-2147483648") != ft_atoi("-2147483648"))
-                                                D_ERROR
-                                                if (atoi("2147483647") != ft_atoi("2147483647"))
-                                                    D_ERROR
-                                                    if (atoi("") != ft_atoi(""))
-                                                        D_ERROR
-                                                        i = 0;
+		D_ERROR;
+	if (atoi("12-3") != ft_atoi("12-3"))
+		D_ERROR;
+	if (atoi("-+123") != ft_atoi("-+123"))
+		D_ERROR;
+	if (atoi("a123") != ft_atoi("a123"))
+		D_ERROR;
+	if (atoi("123a") != ft_atoi("123a"))
+		D_ERROR;
+	if (atoi("123") != ft_atoi("123"))
+		D_ERROR;
+	if (atoi("-123") != ft_atoi("-123"))
+		D_ERROR;
+	if (atoi("+123") != ft_atoi("+123"))
+		D_ERROR;
+	if (atoi(" - 123") != ft_atoi(" - 123"))
+		D_ERROR;
+	if (atoi("\t -123") != ft_atoi("\t -123"))
+		D_ERROR;
+	if (atoi("-2147483648") != ft_atoi("-2147483648"))
+		D_ERROR;
+	if (atoi("2147483647") != ft_atoi("2147483647"))
+		D_ERROR;
+	if (atoi("") != ft_atoi(""))
+		D_ERROR;
+	i = 0;
 	while (i < RANDT)
 	{
 		j = 0;
@@ -1132,117 +1219,109 @@ int				uf_test_atoi(void)
 		str[11] = 0;
 		if (atoi(str) != ft_atoi(str))
 			D_ERROR
-            i++;
+				i++;
 	}
 	return (1);
 }
 #endif
 
-/*
- ** Don't be stupid ppl, be careful with this noob noob noob test
- */
-
 #ifdef	D_STRNCMP
 int				uf_test_strncmp(void)
 {
-	int			a;
-    
+	int		a, i, j, k, n;
+	char	tab[50], tab2[50];
+
 	a = ft_strncmp("abc", "abc", 2);
-#ifdef  __clang__
-	if (strncmp("abc", "abc", 2) != a)
-		D_ERROR;
-#else
 	if (a)
 		D_ERROR;
-#endif
-    
 	a =  ft_strncmp("cba", "abc", 2);
-#ifdef  __clang__
-	if (strncmp("cba", "abc", 2) != a)
-		D_ERROR;
-#else
 	if (!a)
 		D_ERROR;
-#endif
-    
 	a =  ft_strncmp("abc", "cba", 2);
-#ifdef  __clang__
-	if (strncmp("abc", "cba", 2) != a)
-		D_ERROR;
-#else
 	if (!a)
 		D_ERROR;
-#endif
-    
 	a = ft_strncmp("", "", 3);
-#ifdef  __clang__
-	if (strncmp("", "", 3) != a)
-		D_ERROR;
-#else
 	if (a)
 		D_ERROR;
-#endif
-    
 	a = ft_strncmp("q", "a", 0);
-#ifdef  __clang__
-	if (strncmp("q", "a", 0) != a)
-		D_ERROR;
-#else
 	if (a)
 		D_ERROR;
-#endif
-    
 	a = ft_strncmp("abc", "abd", 2);
-#ifdef  __clang__
-	if(strncmp("abc", "abd", 2) != a)
-		D_ERROR;
-#else
 	if (a)
 		D_ERROR;
-#endif
-    
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = rand() % 49;
+			while (j < n)
+				tab[j++] = (char)rand();
+			tab[j] = '\0';
+			j = 0;
+			n = rand() % 49;
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			n = rand() % 50;
+			if (BOOL(strncmp(tab, tab2, n)) != BOOL(ft_strncmp(tab, tab2, n)))
+				D_ERROR;
+			memcpy(tab, tab2, n);
+			if (BOOL(strncmp(tab, tab2, n)) != BOOL(ft_strncmp(tab, tab2, n)))
+				D_ERROR;
+			++i;
+		}
+		++k;
+	}
 	return (1);
 }
 #endif
 
-/*
- ** Don't be stupid ppl, be careful with this noob noob noob test
- */
-
 #ifdef	D_STRCMP
 int				uf_test_strcmp(void)
 {
-	int			a;
-    
+	int			a, i, j, k, n;
+	char		tab1[50], tab2[50];
+
 	a = ft_strcmp("abc", "abc");
-#ifdef  __clang__
-	if (a != strcmp("abc", "abc"))
-		D_ERROR;
-#endif
-#ifndef  __clang__
 	if (a)
 		D_ERROR;
-#endif
 	a = ft_strcmp("cba", "abc");
-#ifdef  __clang__
-	if (a != strcmp("cba", "abc"))
-		D_ERROR;
-#endif
-#ifndef  __clang__
 	if (!a)
 		D_ERROR;
-#endif
 	a = ft_strcmp("abc", "cba");
-#ifdef  __clang__
-	if (a != strcmp("abc", "cba"))
-		D_ERROR;
-#endif
-#ifndef  __clang__
 	if (!a)
 		D_ERROR;
-#endif
 	if (ft_strcmp("", "") != strcmp("", ""))
 		D_ERROR;
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = rand() % 49;
+			while (j < n)
+				tab1[j++] = (char)rand();
+			tab1[j] = '\0';
+			n = rand() % 49;
+			j = 0;
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			if (BOOL(strcmp(tab1, tab2)) != BOOL(ft_strcmp(tab1, tab2)))
+				D_ERROR;
+			memcpy(tab1, tab2, 50);
+			if (ft_strcmp(tab1, tab2) != strcmp(tab1, tab2))
+				D_ERROR
+					++i;
+		}
+		++k;
+	}
+
 	return (1);
 }
 #endif
@@ -1251,19 +1330,27 @@ int				uf_test_strcmp(void)
 int				uf_test_strnstr(void)
 {
 	char		*str = "Hello les genw";
-    
-    
+
+
 	if (strnstr(str, "Hello", 6) != ft_strnstr(str, "Hello", 6))
 		D_ERROR;
 	if (strnstr(str, "Hello", 3) != ft_strnstr(str, "Hello", 3))
 		D_ERROR;
+	if (strnstr(str, "Hella", 6) != ft_strnstr(str, "Hella", 6))
+		D_ERROR;
 	if (strnstr(str, "les", 1) != ft_strnstr(str, "les", 1))
+		D_ERROR;
+	if (strnstr(str, "les", 20) != ft_strnstr(str, "les", 20))
 		D_ERROR;
 	if (strnstr(str, "gen", 2) != ft_strnstr(str, "gen", 2))
 		D_ERROR;
 	if (strnstr(str, "w", 0) != ft_strnstr(str, "w", 0))
 		D_ERROR;
 	if (strnstr(str, "", 3) != ft_strnstr(str, "", 3))
+		D_ERROR;
+	if (strnstr(str, "Hel inexistant", 3) != ft_strnstr(str, "Hel inexistant", 3))
+		D_ERROR;
+	if (strnstr(str, "inexistant", 30) != ft_strnstr(str, "inexistant", 30))
 		D_ERROR;
 	return (1);
 }
@@ -1273,7 +1360,7 @@ int				uf_test_strnstr(void)
 int				uf_test_strstr(void)
 {
 	char		*str = "Hello les genw";
-    
+
 	if (strstr(str, "Hello") != ft_strstr(str, "Hello"))
 		D_ERROR;
 	if (strstr(str, "les") != ft_strstr(str, "les"))
@@ -1286,6 +1373,12 @@ int				uf_test_strstr(void)
 		D_ERROR;
 	if (strstr("", "") != ft_strstr("", ""))
 		D_ERROR;
+	if (strstr(str, "inexistant") != ft_strstr(str, "inexistant"))
+		D_ERROR;
+	if (strstr(str, "Hello i") != ft_strstr(str, "Hello i"))
+		D_ERROR;
+	if (strstr(str, "Hello les genww") != ft_strstr(str, "Hello les genww"))
+		D_ERROR;
 	return (1);
 }
 #endif
@@ -1294,7 +1387,7 @@ int				uf_test_strstr(void)
 int				uf_test_strrchr(void)
 {
 	char		str[] = "Hello je tesx";
-    
+
 	if (strrchr(str, 'H') != ft_strrchr(str, 'H'))
 	{
 		printf("notre=%s\nvotre=%s\n", strrchr(str, 'H'), ft_strrchr(str, 'H'));
@@ -1303,17 +1396,27 @@ int				uf_test_strrchr(void)
 	if (strrchr(str, 'j') != ft_strrchr(str, 'j'))
 	{
 		printf("\nnotre=%s\nvotre=%s\n", strrchr(str, 'j'), ft_strrchr(str, 'j'));
-        D_ERROR
+		D_ERROR
 	}
 	if (strrchr(str, 'x') != ft_strrchr(str, 'x'))
 	{
 		printf("\nnotre=%s\nvotre=%s\n", strrchr(str, 'x'), ft_strrchr(str, 'x'));
-        D_ERROR
+		D_ERROR
 	}
 	if (strrchr(str, 0) != ft_strrchr(str, 0))
 	{
 		printf("\nnotre=%s\nvotre=%s\n", strrchr(str, 0), ft_strrchr(str, 0));
-        D_ERROR
+		D_ERROR
+	}
+	if (strrchr(str, 'e') != ft_strrchr(str, 'e'))
+	{
+		printf("\nnotre=%s\nvotre=%s\n", strrchr(str, 'e'), ft_strrchr(str, 'e'));
+		D_ERROR
+	}
+	if (strrchr(str, 'z') != ft_strrchr(str, 'z'))
+	{
+		printf("\nnotre=%s\nvotre=%s\n", strrchr(str, 'z'), ft_strrchr(str, 'z'));
+		D_ERROR
 	}
 	return (1);
 }
@@ -1323,25 +1426,22 @@ int				uf_test_strrchr(void)
 int				uf_test_strchr(void)
 {
 	char		str[] = "Hello je tesx";
-    
+
 	if (strchr(str, 'H') != ft_strchr(str, 'H'))
-		D_ERROR
-        if (strchr(str, 'j') != ft_strchr(str, 'j'))
-            D_ERROR
-            if (strchr(str, 'x') != ft_strchr(str, 'x'))
-                D_ERROR
-                if (strchr(str, 'y') != ft_strchr(str, 'y'))
-                    D_ERROR
-                    if (strchr(str, 0) != ft_strchr(str, 0))
-                        D_ERROR
-                        return (1);
+		D_ERROR;
+	if (strchr(str, 'j') != ft_strchr(str, 'j'))
+		D_ERROR;
+	if (strchr(str, 'x') != ft_strchr(str, 'x'))
+		D_ERROR;
+	if (strchr(str, 'y') != ft_strchr(str, 'y'))
+		D_ERROR;
+	if (strchr(str, 0) != ft_strchr(str, 0))
+		D_ERROR;
+	if (strchr(str, 'e') != ft_strchr(str, 'e'))
+		D_ERROR;
+	return (1);
 }
 #endif
-
-/*
- ** Not HardCore but better than original
- ** Fixes by pmotte
- */
 
 #ifdef	D_STRLCAT
 int				uf_test_strlcat(void)
@@ -1349,20 +1449,25 @@ int				uf_test_strlcat(void)
 	char		dest[50] = {0};
 	char		dest2[50] = {0};
 	size_t		i, j, k;
-    
+	size_t		n, ret1, ret2;
+	char		tab[50], tab2[50], tab3[50];
+
 	if (strlcat(dest, "Hello ", 4) != ft_strlcat(dest2, "Hello ", 4))
-		D_ERROR
-        memset(dest, 0, sizeof(dest));
+		D_ERROR;
+	memset(dest, 0, sizeof(dest));
 	memset(dest2, 0, sizeof(dest));
 	j = strlcat(dest, "Hello ", 4);
 	k = ft_strlcat(dest2, "Hello ", 4);
 	if (strcmp(dest, dest2) != 0 || j != k)
-		D_ERROR
-        j = strlcat(dest, "Hello ", 1);
+		D_ERROR;
+	j = strlcat(dest, "Hello ", 1);
 	k = ft_strlcat(dest2, "Hello ", 1);
 	if (strcmp(dest, dest2) != 0 || j != k)
-		D_ERROR
-        i = 0;
+	{
+		printf("got %lu : %s, expected %lu : %s\n", k, dest2, j, dest);
+		D_ERROR;
+	}
+	i = 0;
 	while (i < 6)
 	{
 		dest[4 + i] = 'z';
@@ -1372,62 +1477,151 @@ int				uf_test_strlcat(void)
 	j = strlcat(dest, "abc", 6);
 	k = ft_strlcat(dest2, "abc", 6);
 	if (strcmp(dest, dest2) != 0 || j != k)
-		D_ERROR
-        return (1);
+	{
+		printf("got %lu : %s, expected %lu : %s\n", k, dest2, j, dest);
+		D_ERROR;
+	}
+	j = strlcat(dest, "abc", 6);
+	k = ft_strlcat(dest2, "abc", 6);
+	if (strcmp(dest, dest2) != 0 || j != k)
+		D_ERROR;
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = (size_t)(rand() % 24);
+			while (j < n)
+				tab[j++] = (char)rand();
+			tab[j] = '\0';
+			j = 0;
+			n = (size_t)(rand() % 24);
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			n = (size_t)(rand() % 50);
+			memcpy(tab3, tab2, 50);
+			ret1 = strlcat(tab2, tab, n);
+			ret2 = ft_strlcat(tab3, tab, n);
+			if (strcmp(tab2, tab3) != 0 || ret1 != ret2)
+			{
+				printf("got      %lu : %s\n", ret2, tab3);
+				printf("expected %lu : %s\n", ret1, tab2);
+				D_ERROR;
+			}
+			++i;
+		}
+		++k;
+	}
+	return (1);
 }
 #endif
-
-/*
- ** Better than original by mfontain
- */
 
 #ifdef	D_STRNCAT
 int				uf_test_strncat(void)
 {
 	char		dest[50] = {0};
 	char		dest2[50] = {0};
-    
+	char		tab[50], tab2[50], tab3[50];
+	int         i, j, n;
+	size_t k;
+
 	if (strncat(dest, "hello ", 2) != ft_strncat(dest, "hello ", 2))
 		D_ERROR
-        memset(dest, 0, sizeof(dest));
+			memset(dest, 0, sizeof(dest));
 	strncat(dest, "Hello ", 4);
 	ft_strncat(dest2, "Hello ", 4);
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        strncat(dest, "Hello ", 2);
+			strncat(dest, "Hello ", 2);
 	ft_strncat(dest2, "Hello ", 2);
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        strncat(dest, "Hello ", 10);
-    ft_strncat(dest2, "Hello ", 10);
-    if (strcmp(dest, dest2) != 0)
-        D_ERROR
-        strncat(dest, "1234\n78", 7);
-    ft_strncat(dest2, "1234\n78", 7);
-    if (strcmp(dest, dest2) != 0)
-        D_ERROR
-        return (1);
+			strncat(dest, "Hello ", 10);
+	ft_strncat(dest2, "Hello ", 10);
+	if (strcmp(dest, dest2) != 0)
+		D_ERROR
+			strncat(dest, "1234\n78", 7);
+	ft_strncat(dest2, "1234\n78", 7);
+	if (strcmp(dest, dest2) != 0)
+		D_ERROR
+			k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			n = rand() % 24;
+			while (j < n)
+				tab[j++] = (char)rand();
+			tab[j] = '\0';
+			j = 0;
+			n = rand() % 24;
+			while (j < n)
+				tab2[j++] = (char)rand();
+			tab2[j] = '\0';
+			n = rand() % 25; 
+			strcpy(tab3, tab2);
+			strncat(tab2, tab, n);
+			ft_strncat(tab3, tab, n);
+			if (strcmp(tab2, tab3) != 0)
+				D_ERROR
+					++i;
+		}
+		++k;
+	}
+	return (1);
 }
 #endif
 
 #ifdef	D_STRCAT
 int				uf_test_strcat(void)
 {
+	char		tab[50], tab2[50], tab3[50];
 	char		dest[50] = {0};
 	char		dest2[50] = {0};
-    
+	int			i, j;
+	size_t		k;
+
 	if (strcat(dest, "hello ") != ft_strcat(dest, "hello "))
 		D_ERROR
-        memset(dest, 0, sizeof(dest));
+			memset(dest, 0, sizeof(dest));
 	strcat(dest, "Hello ");
 	ft_strcat(dest2, "Hello ");
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        strcat(dest, "Hello ");
+			strcat(dest, "Hello ");
 	ft_strcat(dest2, "Hello ");
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        return (1);
+
+			k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			while (j < 24)
+			{
+				tab[j] = (char)rand();
+				tab2[j] = (char)rand();
+				++j;
+			}
+			tab[j] = '\0'; tab2[j] = '\0';
+			strcpy(tab3, tab2);
+			strcat(tab2, tab);
+			ft_strcat(tab3, tab);
+			if (strcmp(tab2, tab3) != 0)
+				D_ERROR
+					++i;
+		}
+		++k;
+	}
+	return (1);
 }
 #endif
 
@@ -1437,7 +1631,7 @@ int				uf_test_strncpy(void)
 	char		ctab[11], ctab2[21], ctab3[21];
 	int			i, j;
 	size_t		k;
-    
+
 	k = 0;
 	while (k < 21)
 	{
@@ -1457,10 +1651,10 @@ int				uf_test_strncpy(void)
 			ctab2[20] = 0;
 			ctab3[20] = 0;
 			if (strncpy(ctab2, ctab, k) != ctab2 || ft_strncpy(ctab3, ctab, k) != ctab3)
-				D_ERROR
-                if (strcmp(ctab2, ctab3))
-                    D_ERROR
-                    ++i;
+				D_ERROR;
+			if (strcmp(ctab2, ctab3))
+				D_ERROR;
+			++i;
 		}
 		k++;
 	}
@@ -1473,66 +1667,92 @@ int				uf_test_strcpy(void)
 {
 	char		dest[50] = {0};
 	char		dest2[50] = {0};
-    
-    
+
+
 	char			ctab[11], ctab2[11], ctab3[11];
-    int				i, j;
-    size_t			k;
-    
-    k = 0;
-    while (k <= sizeof(ctab))
-    {
-        i = 0;
-        while (i < RANDT)
-        {
-            j = 0;
-            while (j < 11)
-            {
-                ctab[j] = (char)rand();
-                ctab2[j] = 0; ctab3[j] = 0;
-                j++;
-            }
+	int				i, j;
+	size_t			k;
+
+	k = 0;
+	while (k <= sizeof(ctab))
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			while (j < 11)
+			{
+				ctab[j] = (char)rand();
+				ctab2[j] = 0; ctab3[j] = 0;
+				j++;
+			}
 			ctab[10] = 0;
 			if (strcpy(ctab2, ctab) != ctab2 || ft_strcpy(ctab3, ctab) != ctab3)
-				D_ERROR
-                if (strcmp(ctab2, ctab3))
-                    D_ERROR
-                    ++i;
+				D_ERROR;
+			if (strcmp(ctab2, ctab3))
+				D_ERROR;
+			++i;
 		}
 		k++;
 	}
 	if (strcpy(dest, "Hello foo") != ft_strcpy(dest, "Hello foo"))
 		D_ERROR
-        strcpy(dest, "Hello foo");
+			strcpy(dest, "Hello foo");
 	ft_strcpy(dest2, "Hello foo");
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        strcpy(dest, "Hello");
+			strcpy(dest, "Hello");
 	ft_strcpy(dest2, "Hello");
 	if (strcmp(dest, dest2) != 0)
 		D_ERROR
-        return (1);
+			return (1);
 }
 #endif
 
 #ifdef	D_STRDUP
 int				uf_test_strdup(void)
 {
+	char		tab[50], *tab2, *tab3;
 	char		*ret1;
 	char		*ret2;
-    
+	int			i, j;
+	size_t		k;
+
 	ret1 = strdup("");
 	ret2 = ft_strdup("");
 	if (strcmp(ret1, ret2) != 0)
 		D_ERROR
-        free(ret1);
+			free(ret1);
 	free(ret2);
 	ret1 = strdup("hello");
 	ret2 = ft_strdup("hello");
 	if (strcmp(ret1, ret2) != 0)
 		D_ERROR
-        free(ret1);
+			free(ret1);
 	free(ret2);
+	k = 0;
+	while (k <= 60)
+	{
+		i = 0;
+		while (i < RANDT)
+		{
+			j = 0;
+			while (j < 49)
+			{
+				tab[j] = (char)rand();
+				++j;
+			}
+			tab[j] = '\0';
+			tab2 = strdup(tab);
+			tab3 = ft_strdup(tab);
+			if (strcmp(tab2, tab3) != 0)
+				D_ERROR
+			free(tab2);
+			free(tab3);
+			++i;
+		}
+		++k;
+	}
 	return (1);
 }
 #endif
@@ -1541,12 +1761,16 @@ int				uf_test_strdup(void)
 int				uf_test_strlen(void)
 {
 	if (strlen("") != ft_strlen(""))
-		D_ERROR
-        if (strlen("abc") != ft_strlen("abc"))
-            D_ERROR
-            if (strlen("a") != ft_strlen("a"))
-                D_ERROR
-                return (1);
+		D_ERROR;
+	if (strlen("abc") != ft_strlen("abc"))
+		D_ERROR;
+	if (strlen("a") != ft_strlen("a"))
+		D_ERROR;
+	if (strlen("ab\0c") != ft_strlen("ab\0c"))
+		D_ERROR;
+	if (strlen("ab\nc") != ft_strlen("ab\nc"))
+		D_ERROR;
+	return (1);
 }
 #endif
 
@@ -1557,11 +1781,11 @@ int				uf_test_memmove(void)
 	char		str2[] = "memmove can be very useful......";
 	char		str3[] = "memmove can be very useful......";
 	char		str4[] = "memmove can be very useful......";
-    
+
 	char		s1[101], t1[101];
 	char		s2[101], t2[101];
 	size_t		i, j;
-    
+
 	i = 0;
 	while (i < RANDT)
 	{
@@ -1576,16 +1800,16 @@ int				uf_test_memmove(void)
 		memcpy(t1, s1, sizeof(s1));
 		memcpy(t2, s2, sizeof(s2));
 		if (strcmp(memmove(str + 10, str + 5, 10), ft_memmove(str2 + 10, str2 + 5, 10)) != 0)
-			D_ERROR
-            if (strcmp(memmove(str3 + 5, str3 + 10, 10), ft_memmove(str4 + 5, str4 + 10, 10)) != 0)
-                D_ERROR
-                if (strcmp(memmove(s1, s2, 2), ft_memmove(t1, t2, 2)) != 0)
-                    D_ERROR
-                    if (strcmp(memmove(s1, s1 + 25, 30), ft_memmove(t1, t1 + 25, 30)) != 0)
-                        D_ERROR
-                        if (strcmp(memmove(s1 + 30, s1, 40), ft_memmove(t1 + 30, t1, 40)) != 0)
-                            D_ERROR
-                            ++i;
+			D_ERROR;
+		if (strcmp(memmove(str3 + 5, str3 + 10, 10), ft_memmove(str4 + 5, str4 + 10, 10)) != 0)
+			D_ERROR;
+		if (strcmp(memmove(s1, s2, 2), ft_memmove(t1, t2, 2)) != 0)
+			D_ERROR;
+		if (strcmp(memmove(s1, s1 + 25, 30), ft_memmove(t1, t1 + 25, 30)) != 0)
+			D_ERROR;
+		if (strcmp(memmove(s1 + 30, s1, 40), ft_memmove(t1 + 30, t1, 40)) != 0)
+			D_ERROR;
+	++i;
 	}
 	return (1);
 }
@@ -1599,9 +1823,8 @@ int				uf_test_memchr(void)
 	unsigned long	ltab[11];
 	size_t			j;
 	int				i;
-    
+
 	i = -300;
-	memchr(NULL, 0, 0);
 	ft_memchr(NULL, 0, 0);
 	while (i < 300)
 	{
@@ -1614,12 +1837,12 @@ int				uf_test_memchr(void)
 			j++;
 		}
 		if (memchr(ctab, i, sizeof(ctab)) != ft_memchr(ctab, i, sizeof(ctab)))
-			D_ERROR
-            if (memchr(itab, i, sizeof(itab)) != ft_memchr(itab, i, sizeof(itab)))
-                D_ERROR
-                if (memchr(ltab, i, sizeof(ltab)) != ft_memchr(ltab, i, sizeof(ltab)))
-                    D_ERROR
-                    ++i;
+			D_ERROR;
+		if (memchr(itab, i, sizeof(itab)) != ft_memchr(itab, i, sizeof(itab)))
+			D_ERROR;
+		if (memchr(ltab, i, sizeof(ltab)) != ft_memchr(ltab, i, sizeof(ltab)))
+			D_ERROR;
+		++i;
 	}
 	return (1);
 }
@@ -1628,46 +1851,42 @@ int				uf_test_memchr(void)
 #ifdef	D_MEMCMP
 int				uf_test_memcmp(void)
 {
-    char            ctab[11], ctab2[11];
-    int             itab[11], itab2[11];
-    unsigned long   ltab[11], ltab2[11];
-    size_t          i, j;
-    
-#ifdef	__clang__
-	if (memcmp(NULL, NULL, 0) != ft_memcmp(NULL, NULL, 0))
-		D_ERROR
-#endif
-        i = 0;
-    while (i < 11)
-    {
-        j = 0;
-        while (j < 11)
-        {
-            ctab[j] = (char)rand();
-            ctab2[j] = (char)rand();
+	char            ctab[11], ctab2[11];
+	int             itab[11], itab2[11];
+	unsigned long   ltab[11], ltab2[11];
+	size_t          i, j;
+
+	i = 0;
+	while (i < 11)
+	{
+		j = 0;
+		while (j < 11)
+		{
+			ctab[j] = (char)rand();
+			ctab2[j] = (char)rand();
 			itab[j] = rand();
 			itab2[j] = rand();
-            ltab[j] = (unsigned long)rand() * LONG;
+			ltab[j] = (unsigned long)rand() * LONG;
 			ltab2[j] = (unsigned long)rand() * LONG;
-            j++;
-        }
+			j++;
+		}
 		if (memcmp(ctab, ctab2, sizeof(ctab)) != ft_memcmp(ctab, ctab2, sizeof(ctab)))
-            D_ERROR
-            memcpy(ctab2, ctab, sizeof(ctab));
+			D_ERROR
+				memcpy(ctab2, ctab, sizeof(ctab));
 		if (memcmp(ctab, ctab2, sizeof(ctab)) != ft_memcmp(ctab, ctab2, sizeof(ctab)))
-            D_ERROR
-            if (memcmp(itab, itab2, sizeof(itab)) != ft_memcmp(itab, itab2, sizeof(itab)))
-                D_ERROR
-                memcpy(itab2, itab, sizeof(itab));
-        if (memcmp(itab, itab2, sizeof(itab)) != ft_memcmp(itab, itab2, sizeof(itab)))
-            D_ERROR
-            if (memcmp(ltab, ltab2, sizeof(ltab)) != ft_memcmp(ltab, ltab2, sizeof(ltab)))
-                D_ERROR
-                memcpy(ltab2, ltab, sizeof(ltab));
-        if (memcmp(ltab, ltab2, sizeof(ltab)) != ft_memcmp(ltab, ltab2, sizeof(ltab)))
-            D_ERROR
-            ++i;
-    }
+			D_ERROR
+				if (memcmp(itab, itab2, sizeof(itab)) != ft_memcmp(itab, itab2, sizeof(itab)))
+					D_ERROR
+						memcpy(itab2, itab, sizeof(itab));
+		if (memcmp(itab, itab2, sizeof(itab)) != ft_memcmp(itab, itab2, sizeof(itab)))
+			D_ERROR
+				if (memcmp(ltab, ltab2, sizeof(ltab)) != ft_memcmp(ltab, ltab2, sizeof(ltab)))
+					D_ERROR
+						memcpy(ltab2, ltab, sizeof(ltab));
+		if (memcmp(ltab, ltab2, sizeof(ltab)) != ft_memcmp(ltab, ltab2, sizeof(ltab)))
+			D_ERROR
+				++i;
+	}
 	return (1);
 }
 #endif
@@ -1681,11 +1900,7 @@ int				uf_test_memccpy(void)
 	int				i, j;
 	size_t			k;
 	void			*temp, *temp2;
-    
-#ifdef	__clang__
-	memccpy(NULL, NULL, 0, 0);
-	ft_memccpy(NULL, NULL, 0, 0);
-#endif
+
 	k = 0;
 	while (k <= sizeof(ltab))
 	{
@@ -1708,17 +1923,17 @@ int				uf_test_memccpy(void)
 			temp2 = ft_memccpy(ctab2, ctab, 'a', (k < sizeof(ctab)) ? k : sizeof(ctab));
 			if ((memcmp(ctab2, ctab3, sizeof(ctab)) != 0 || (temp != temp2)))
 				D_ERROR
-                temp = memccpy(itab2, itab, 'a', (k < sizeof(itab)) ? k : sizeof(itab));
+					temp = memccpy(itab2, itab, 'a', (k < sizeof(itab)) ? k : sizeof(itab));
 			memcpy(itab3, itab2, sizeof(itab));
 			temp2 = ft_memccpy(itab2, itab, 'a', (k < sizeof(itab)) ? k : sizeof(itab));
 			if ((memcmp(itab2, itab3, sizeof(itab)) != 0 || (temp != temp2)))
 				D_ERROR
-                temp = memccpy(ltab2, ltab, 'a', (k < sizeof(ltab)) ? k : sizeof(ltab));
+					temp = memccpy(ltab2, ltab, 'a', (k < sizeof(ltab)) ? k : sizeof(ltab));
 			memcpy(ltab3, ltab2, sizeof(ltab));
 			temp2 = ft_memccpy(ltab2, ltab, 'a', (k < sizeof(ltab)) ? k : sizeof(ltab));
 			if ((memcmp(ltab2, ltab3, sizeof(ltab)) != 0 || (temp != temp2)))
 				D_ERROR
-                ++i;
+					++i;
 		}
 		++k;
 	}
@@ -1735,11 +1950,7 @@ int					uf_test_memcpy(void)
 	int				i, j;
 	size_t			k;
 	void			*temp, *temp2, *temp3;
-    
-#ifdef	__clang__
-	memcpy(NULL, NULL, 0);
-	ft_memcpy(NULL, NULL, 0);
-#endif
+
 	k = 0;
 	while (k <= sizeof(ltab))
 	{
@@ -1764,12 +1975,12 @@ int					uf_test_memcpy(void)
 			memcpy(ltab2, ltab, (k < sizeof(ltab)) ? k : sizeof(ltab));
 			temp3 = ft_memcpy(ltab3, ltab, (k < sizeof(ltab)) ? k : sizeof(ltab));
 			if ((memcmp(itab2, itab3, sizeof(itab)) != 0 || (temp2 != itab3)))
-				D_ERROR
-                if (memcmp(ctab2, ctab3, sizeof(ctab)) != 0 || temp != ctab3)
-                    D_ERROR
-                    if (memcmp(ltab2, ltab3, sizeof(ltab)) != 0 ||( temp3 != ltab3))
-                        D_ERROR
-                        ++i;
+				D_ERROR;
+			if (memcmp(ctab2, ctab3, sizeof(ctab)) != 0 || temp != ctab3)
+				D_ERROR;
+			if (memcmp(ltab2, ltab3, sizeof(ltab)) != 0 ||( temp3 != ltab3))
+				D_ERROR;
+			++i;
 		}
 		++k;
 	}
@@ -1785,11 +1996,7 @@ int					uf_test_memset(void)
 	unsigned long	ltab[11], ltab2[11];
 	size_t			i, j, k;
 	void			*temp, *temp2;
-    
-#ifdef	__clang__
-	memset(NULL, 0, 0);
-	ft_memset(NULL, 0, 0);
-#endif
+
 	k = 0;
 	while (k <= sizeof(ltab))
 	{
@@ -1811,15 +2018,15 @@ int					uf_test_memset(void)
 			temp2 = memset(itab2, i, (k < sizeof(itab)) ? k : sizeof(itab));
 			if (memcmp(itab, itab2, sizeof(itab)) != 0 || temp != itab || temp2 != itab2)
 				D_ERROR
-                temp = ft_memset(ctab, i, (k < sizeof(ctab)) ? k : sizeof(ctab));
+					temp = ft_memset(ctab, i, (k < sizeof(ctab)) ? k : sizeof(ctab));
 			temp2 = memset(ctab2, i, (k < sizeof(ctab)) ? k : sizeof(ctab));
 			if (memcmp(ctab, ctab2, sizeof(ctab)) != 0 || temp != ctab || temp2 != ctab2)
 				D_ERROR
-                temp = ft_memset(ltab, i, (k < sizeof(ltab)) ? k : sizeof(ltab));
+					temp = ft_memset(ltab, i, (k < sizeof(ltab)) ? k : sizeof(ltab));
 			temp2 = memset(ltab2, i, (k < sizeof(ltab)) ? k : sizeof(ltab));
 			if (memcmp(ltab, ltab2, sizeof(ltab)) != 0 || temp != ltab || temp2 != ltab2)
 				D_ERROR
-                ++i;
+					++i;
 		}
 		++k;
 	}
@@ -1834,12 +2041,8 @@ int					uf_test_bzero(void)
 	int				itab[11], itab2[11];
 	unsigned long	ltab[11], ltab2[11];
 	size_t			i, j;
-    
+
 	i = 0;
-#ifdef	__clang__
-	bzero(NULL, 0);
-	ft_bzero(NULL, 0);
-#endif
 	while (i < 11)
 	{
 		j = 0;
@@ -1856,16 +2059,16 @@ int					uf_test_bzero(void)
 		bzero(ctab2, i);
 		ft_bzero(ctab, i);
 		if (memcmp(ctab, ctab2, sizeof(ctab)) != 0)
-			D_ERROR
-            bzero(itab2, i);
+			D_ERROR;
+		bzero(itab2, i);
 		ft_bzero(itab, i);
 		if (memcmp(itab, itab2, sizeof(itab)) != 0)
-			D_ERROR
-            bzero(ltab2, i);
+			D_ERROR;
+		bzero(ltab2, i);
 		ft_bzero(ltab, i);
 		if (memcmp(ltab, ltab2, sizeof(ltab)) != 0)
 			D_ERROR
-            ++i;
+				++i;
 	}
 	return (1);
 }
