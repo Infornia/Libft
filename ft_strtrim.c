@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 18:25:22 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/10 14:07:21 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 17:50:37 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 char	*ft_strtrim(const char *s)
 {
-	char	*str;
+	char	*ret;
 	size_t	i;
 	size_t	j;
 
 	if (s == NULL)
 		return (NULL);
 	i = 0;
-	j = ft_strlen(s);
-	str = (char *)malloc(ft_strlen(s) + 1);
+	j = ft_strlen(s) - 1;
+	ret = (char *)malloc(sizeof(*ret) * (ft_strlen(s) + 1));
 	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
 		i++;
 	while (s[j] == ' ' || s[j] == '\n' || s[j] == '\t')
 		j--;
+	i = 0;
 	while (i < j)
 	{
-		str[i] = s[i];
+		ret[i] = s[i];
 		i++;
 	}
-	return (str);
+	return (ret);
 }

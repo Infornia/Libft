@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 17:52:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/09 18:11:06 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 16:43:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,18 @@ char	*ft_strstr(const char *s1, const char *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
+	if (s2[0] == '\0')
+		return ((char *)s1);
 	i = 0;
-	if (s2[i] == '\0')
-		return (NULL);
-	j = 0;
 	while (s1[i])
 	{
-		while (s2[j])
+		j = 0;
+		while (s1[i + j] == s2[j])
 		{
-			if (!s1[i] && !s2[i])
-				return (char *) (&(s1[i]));
-			if (s1[i + j])
-				return (NULL);
 			j++;
+			if (!s2[j])
+				return ((char *) (s1 + i));
 		}
-
 		i++;
 	}
 	return (NULL);

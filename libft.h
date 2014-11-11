@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/10 18:29:45 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 11:52:01 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	ft_strclr(char *s);
 int		ft_strcmp(const char *s1, const char *s2);
 void	ft_strdel(char **as);
 char	*ft_strdup(const char *s1);
+int		ft_strequ(const char *s1, const char *s2);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(const char *s1, const char *s2);
