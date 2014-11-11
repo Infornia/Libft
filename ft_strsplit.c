@@ -6,35 +6,38 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 15:11:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/10 18:16:50 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 21:59:48 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size_word(const char *s, size_t i, char c)
+static int	size_word(const char *s, char c)
 {
-	size_t	size;
+	size_t	i;
 
-	while (s[i] != c)
+	i = 0;
+	while (s[i] != c && s[i])
 		i++;
-	size = i;
-	return (size);
+	return (i);
 }
 
-static int	nb_word(const char *s, char c)
+static size_t	nb_word(const char *s, char c)
 {
 	size_t	i;
 	size_t	nb;
+	int		in;
 
 	nb = 0;
 	i = 0;
 	while (s[i])
 	{
-		if (s[i] == c)
+		if (s[i] == c && in)
+			in = !in;
+		else if (s[i] != c && !in)
 		{
-			if(s[i + 1] != c)
-				nb++;
+			nb++;
+			in = !in;
 		}
 		i++;
 	}
@@ -54,34 +57,36 @@ static char	**tab_alloc(size_t size)
 
 static void	split(char **ret, const char *s, char c)
 {
-	size_t	i;
 	size_t	j;
 	size_t	size;
+	char	*word;
 	
-	i = 0;
 	j = 0;
-	while (s[i])
+	while (*s)
 	{
-		if(s[i] == c)
+		size = size_word(s, c);
+		if(size)
 		{
-			if(s[i + 1] != c)
-			{
-				size = size_word(s, i, c);
-				ret[j] = ft_strsub(s, i, size);
-				j++;
-			}
+			word = ft_strsub(s, 0, size);
+			ret[j] = word;
+			j++;
 		}
-		i++;
+		s += size;
+		while (*s == c)
+			++s;
 	}
+	ret[j] = NULL;
 }
 
 char	**ft_strsplit(const char *s, char c)
 {
 	char	**ret;
+	size_t	nb;
 
 	if (s == NULL)
 		return (tab_alloc(0));
-	ret = tab_alloc(nb_word(s,c));
+	nb = nb_word(s, c);
+	ret = tab_alloc(nb);
 	if (ret == NULL)
 		return (NULL);
 	split(ret, s, c);

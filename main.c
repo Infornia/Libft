@@ -6,7 +6,7 @@
 /*   By: Pierre <Pierre@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:43:06 by student@42        #+#    #+#             */
-/*   Updated: 2014/11/10 19:19:39 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 23:16:09 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,8 +164,8 @@ int					main(int argc, const char **argv)
 	D_ADD_HCTEST(toupper);
 #define	D_TOLOWER
 	D_ADD_HCTEST(tolower);
-#define	D_MEMALLOC_AND_DEL
-	D_ADD_TEST(memalloc_and_del);
+//#define	D_MEMALLOC_AND_DEL
+//	D_ADD_TEST(memalloc_and_del);
 #define	D_STRNEW
 	D_ADD_TEST(strnew);
 #define	D_STRDEL
@@ -190,8 +190,8 @@ int					main(int argc, const char **argv)
 	D_ADD_TEST(strjoin);
 //#define	D_STRSPLIT
 //	D_ADD_TEST(strsplit);
-//#define	D_ITOA
-//	D_ADD_HCTEST(itoa);
+#define	D_ITOA
+	D_ADD_HCTEST(itoa);
 #define	D_STRTRIM
 	D_ADD_TEST(strtrim);
 //#define	D_LSTNEW
@@ -718,9 +718,9 @@ int				uf_test_itoa(void)
 		return (0);
 	}
 	free(ret);
-	if (strcmp(ret = ft_itoa(-2147483648), "-2147483648") != 0)
+	if (strcmp(ret = ft_itoa(-2147483647), "-2147483647") != 0)
 	{
-		printf("\033[31mft_itoa(-2147483648).\nExpected ret = \"-2147483648\" \
+		printf("\033[31mft_itoa(-2147483647).\nExpected ret = \"-2147483647\" \
 				but have ret = \"%s\"\033[0m\n", ret);
 		free(ret);
 		return (0);

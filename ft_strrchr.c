@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 16:42:17 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/09 16:52:32 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/11 15:26:16 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,17 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	size_t	i;
+	int	i;
 
 	i = ft_strlen(str);
 	if (str == NULL)
 		return (NULL);
-	while (str[i])
+	if (c == '\0')
+	{
+		return ((char *) (str + i));
+		i--;
+	}
+	while (i >= 0)
 	{
 		if (str[i] == ((char)c))
 			return ((char *)str + i);
