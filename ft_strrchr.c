@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 16:42:17 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 15:26:16 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 20:38:16 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *str, int c)
 		return (NULL);
 	if (c == '\0')
 	{
-		return ((char *) (str + i));
+		return ((char *)(str + i));
 		i--;
 	}
 	while (i >= 0)

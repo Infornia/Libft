@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 15:11:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/12 20:49:07 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 22:57:29 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		size_word(const char *s, char c)
+static size_t	size_word(const char *s, char c)
 {
 	size_t	i;
 
@@ -30,6 +30,7 @@ static size_t	nb_word(const char *s, char c)
 
 	nb = 0;
 	i = 0;
+    in = 0;
 	while (s[i])
 	{
 		if (s[i] == c && in)
