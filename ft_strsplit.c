@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 15:11:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 21:59:48 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 20:49:07 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	size_word(const char *s, char c)
+static int		size_word(const char *s, char c)
 {
 	size_t	i;
 
@@ -44,7 +44,7 @@ static size_t	nb_word(const char *s, char c)
 	return (nb);
 }
 
-static char	**tab_alloc(size_t size)
+static char		**tab_alloc(size_t size)
 {
 	char	**ret;
 
@@ -55,17 +55,18 @@ static char	**tab_alloc(size_t size)
 	return (ret);
 }
 
-static void	split(char **ret, const char *s, char c)
+static void		split(char **ret, const char *s, char c)
+
 {
 	size_t	j;
 	size_t	size;
 	char	*word;
-	
+
 	j = 0;
 	while (*s)
 	{
 		size = size_word(s, c);
-		if(size)
+		if (size)
 		{
 			word = ft_strsub(s, 0, size);
 			ret[j] = word;
@@ -78,7 +79,7 @@ static void	split(char **ret, const char *s, char c)
 	ret[j] = NULL;
 }
 
-char	**ft_strsplit(const char *s, char c)
+char			**ft_strsplit(const char *s, char c)
 {
 	char	**ret;
 	size_t	nb;

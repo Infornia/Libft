@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 17:52:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 16:43:12 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 20:49:40 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strstr(const char *s1, const char *s2)
 		{
 			j++;
 			if (!s2[j])
-				return ((char *) (s1 + i));
+				return ((char *)(s1 + i));
 		}
 		i++;
 	}

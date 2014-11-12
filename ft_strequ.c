@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 22:38:27 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 17:30:43 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 20:47:57 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		ft_strequ(const char *s1, const char *s2)
 {
 	if (s1 == NULL && s2 == NULL)
-		return(1);
+		return (1);
 	if (s1 == NULL || s2 == NULL)
 		return (0);
 	return (!ft_strcmp(s1, s2));
