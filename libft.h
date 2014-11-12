@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 11:52:01 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 17:37:31 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <string.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 int		ft_atoi(const char *str);
 void	ft_bzero(void *str, size_t n);
@@ -35,9 +36,14 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_memdel(void **ap);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-int		ft_putchar(int c);
-int		ft_putnbr(int nb);
-void	ft_putstr(char *str);
+void	ft_putchar(char c);
+void	ft_putchar_fd(char c, int fd);
+void	ft_putendl(const char *s);
+void	ft_putendl_fd(const char *s, int fd);
+void	ft_putnbr(int nb);
+void	ft_putnbr_fd(int nb, int fd);
+void	ft_putstr(const char *str);
+void	ft_putstr_fd(const char *s, int fd);
 char	*ft_strcpy(char *dst, const char *src);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strchr(const char *str, int c);

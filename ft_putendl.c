@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 22:54:43 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/11 22:57:04 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/11/12 17:22:51 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	ft_putendl(const char *s)
 {
-	ft_putstr(s);
+	ft_putstr((char *)s);
 	ft_putchar('\n');
 }
