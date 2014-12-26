@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 13:50:09 by mwilk             #+#    #+#             */
-/*   Updated: 2014/12/06 17:21:27 by mwilk            ###   ########.fr       */
+/*   Created: 2014/12/01 18:03:03 by mwilk             #+#    #+#             */
+/*   Updated: 2014/12/02 18:19:15 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	char	*ret;
-	size_t	i;
+	t_list	*node;
+	t_list	*next;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	ret = (char*)malloc(sizeof(char) * len + 1);
-	if (!ret)
-		return (NULL);
-	while (i < len && s[i])
+	if (!del || !alst || !(*alst))
+		return ;
+	node = *alst;
+	while (node)
 	{
-		ret[i] = s[start + i];
-		i++;
+		next = node->next;
+		ft_lstdelone(&node, del);
+		node = next;
 	}
-	ret[i] = '\0';
-	return (ret);
+	*alst = NULL;
 }

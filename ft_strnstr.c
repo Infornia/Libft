@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 16:55:47 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/12 20:37:32 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/12/08 14:39:14 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,29 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	i;
-	size_t	j;
+	char		c;
+	char		sc;
+	size_t		len;
+	int			go;
 
-	i = 0;
-	if (s1 == NULL || s2 == NULL || n == 0 || n < ft_strlen(s2))
-		return (NULL);
-	if (s2[0] == '\0')
-		return ((char *)s1);
-	while (s1[i])
+	go = 0;
+	if ((c = *s2++) != '\0')
 	{
-		j = 0;
-		while (s1[i + j] == s2[j])
+		len = ft_strlen(s2);
+		while (!go || ft_strncmp(s1, s2, len) != 0)
 		{
-			j++;
-			if (!s2[j])
-				return ((char *)s1 + i);
+			go = 1;
+			if ((sc = *s1++) == '\0' || n-- < 1)
+				return (NULL);
+			while (sc != c)
+			{
+				if ((sc = *s1++) == '\0' || n-- < 1)
+					return (NULL);
+			}
+			if (len > n)
+				return (NULL);
 		}
-		i++;
+		s1--;
 	}
-	return (NULL);
+	return ((char *)s1);
 }

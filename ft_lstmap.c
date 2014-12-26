@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 13:50:09 by mwilk             #+#    #+#             */
-/*   Updated: 2014/12/06 17:21:27 by mwilk            ###   ########.fr       */
+/*   Created: 2014/12/01 19:02:24 by mwilk             #+#    #+#             */
+/*   Updated: 2014/12/05 23:21:38 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+t_list		*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	char	*ret;
-	size_t	i;
+	t_list		*l_new;
+	t_list		*tmp;
 
-	i = 0;
-	if (!s)
+	if (!lst || !f)
 		return (NULL);
-	ret = (char*)malloc(sizeof(char) * len + 1);
-	if (!ret)
-		return (NULL);
-	while (i < len && s[i])
+	tmp = f(lst);
+	while (lst)
 	{
-		ret[i] = s[start + i];
-		i++;
+		ft_lstaddq(&tmp, f(lst));
+		lst = lst->next;
 	}
-	ret[i] = '\0';
-	return (ret);
+	l_new = tmp->next;
+	return (l_new);
 }

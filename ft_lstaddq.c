@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsub.c                                        :+:      :+:    :+:   */
+/*   ft_lstaddq.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/10 13:50:09 by mwilk             #+#    #+#             */
-/*   Updated: 2014/12/06 17:21:27 by mwilk            ###   ########.fr       */
+/*   Created: 2014/12/01 19:23:07 by mwilk             #+#    #+#             */
+/*   Updated: 2014/12/05 23:17:43 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsub(const char *s, unsigned int start, size_t len)
+void	ft_lstaddq(t_list **alst, t_list *new)
 {
-	char	*ret;
-	size_t	i;
+	t_list	*end;
 
-	i = 0;
-	if (!s)
-		return (NULL);
-	ret = (char*)malloc(sizeof(char) * len + 1);
-	if (!ret)
-		return (NULL);
-	while (i < len && s[i])
+	if (!alst)
 	{
-		ret[i] = s[start + i];
-		i++;
+		*alst = new;
+		return ;
 	}
-	ret[i] = '\0';
-	return (ret);
+	end = ft_lstlast(*alst);
+	end->next = new;
 }

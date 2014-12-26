@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 15:11:05 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/12 22:57:29 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/12/06 15:27:23 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	nb_word(const char *s, char c)
 
 	nb = 0;
 	i = 0;
-    in = 0;
+	in = 0;
 	while (s[i])
 	{
 		if (s[i] == c && in)
@@ -57,7 +57,6 @@ static char		**tab_alloc(size_t size)
 }
 
 static void		split(char **ret, const char *s, char c)
-
 {
 	size_t	j;
 	size_t	size;
@@ -85,8 +84,8 @@ char			**ft_strsplit(const char *s, char c)
 	char	**ret;
 	size_t	nb;
 
-	if (s == NULL)
-		return (tab_alloc(0));
+	if (!s)
+		return (NULL);
 	nb = nb_word(s, c);
 	ret = tab_alloc(nb);
 	if (ret == NULL)
