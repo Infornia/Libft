@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/11 23:06:18 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/12 17:30:43 by mwilk            ###   ########.fr       */
+/*   Updated: 2014/12/31 12:47:26 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,5 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	if (n < 0)
-	{
-		ft_putchar_fd('-', fd);
-		n = -n;
-	}
-	if (n / 10 != 0)
-		ft_putnbr_fd(n, fd);
-	ft_putchar_fd(n % 10 + 48, fd);
+	ft_putstr_fd(ft_itoa(n), fd);
 }
