@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2014/12/17 19:19:55 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/01/06 15:42:03 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ t_list				*ft_lstnew(void const *content, size_t content_size);
 int					ft_atoi(const char *str);
 char				*ft_itoa(int c);
 void				ft_bzero(void *str, size_t n);
+void				*ft_realloc(void *ptr, size_t old, size_t size);
 
 /*
 ** FT_IS
