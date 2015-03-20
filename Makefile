@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/01/12 23:11:47 by mwilk            ###   ########.fr        #
+#    Updated: 2015/03/20 16:43:57 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC = ft_atoi.c \
 	  ft_putchar.c ft_putchar_fd.c ft_putendl.c ft_putendl_fd.c \
 	  ft_putnbr.c ft_putnbr_fd.c ft_putstr.c ft_putstr_fd.c \
 	  ft_strcat.c ft_strchr.c ft_strclr.c ft_strcmp.c ft_strcpy.c \
+	  ft_strgroupchar.c ft_strchartrim.c \
 	  ft_strdel.c ft_strdup.c ft_strequ.c ft_striter.c ft_striteri.c \
 	  ft_strjoin.c ft_strlcat.c ft_strlen.c ft_strmap.c ft_strmapi.c \
 	  ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c \
@@ -38,6 +39,7 @@ SRC = ft_atoi.c \
 	  ft_strtrim.c ft_realloc.c \
 	  ft_tolower.c ft_toupper.c \
 	  get_next_line.c \
+	  ft_tree_new.c ft_tree_del.c ft_tree_h.c ft_tree_add.c \
 
 
 all: $(NAME)

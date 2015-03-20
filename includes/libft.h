@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/01/06 15:42:03 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/20 16:49:49 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,23 @@
 # define MIN(x, y)	(x < y) ? x : y
 # define MAX(x, y)	(x > y) ? x : y
 # define BUFF_SIZE 16
+
+/*
+** TREE
+*/
+
+typedef struct		s_tree
+{
+	void	*content;
+	size_t	content_size;
+	struct	s_tree	*right;
+	struct	s_tree	*left;
+}					t_tree;
+
+t_tree	*ft_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *));
+void	ft_tree_del(t_tree **parent, void (*del)(void *, size_t));
+int		ft_tree_h(t_tree *node);
+t_tree	*ft_tree_new(const void *content, size_t content_size);
 
 /*
 ** LISTS
@@ -92,12 +109,14 @@ void				ft_putstr_fd(const char *s, int fd);
 */
 char				*ft_strcpy(char *dst, const char *src);
 char				*ft_strcat(char *s1, const char *s2);
+char				*ft_strchartrim(const char *s, char c);
 char				*ft_strchr(const char *str, int c);
 void				ft_strclr(char *s);
 int					ft_strcmp(const char *s1, const char *s2);
 void				ft_strdel(char **as);
 char				*ft_strdup(const char *s1);
 int					ft_strequ(const char *s1, const char *s2);
+char				*ft_strgroupchar(const char *s, char c);
 void				ft_striter(char *s, void (*f)(char *));
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
 char				*ft_strjoin(const char *s1, const char *s2);
