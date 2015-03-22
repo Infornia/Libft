@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/20 14:16:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/22 20:09:29 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/22 20:22:09 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ static int	get_diff(t_tree *node)
 	int		left_h;
 	int		right_h;
 
-	left_h = ft_tree_h(node->left);
-	right_h = ft_tree_h(node->right);
+	left_h = tt_tree_h(node->left);
+	right_h = tt_tree_h(node->right);
 	return (left_h - right_h);
 }
 
@@ -71,18 +71,18 @@ static t_tree	*balance(t_tree *node)
 	return (node);
 }
 
-t_tree		*ft_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *))
+t_tree		*tt_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *))
 {
 	if (root == NULL)
 		return (node);
 	else if ((*cmp)(node->content, root->content) <= 0)
 	{
-		root->left = ft_tree_add(root->left, node, cmp);
+		root->left = tt_tree_add(root->left, node, cmp);
 		root = balance(root);
 	}
 	else if ((*cmp)(node->content, root->content) > 0)
 	{
-		root->left = ft_tree_add(root->right, node, cmp);
+		root->left = tt_tree_add(root->right, node, cmp);
 		root = balance(root);
 	}
 	return (root);

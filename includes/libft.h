@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/22 20:15:17 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/22 20:22:31 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ t_tree	*tt_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *));
 void	tt_tree_del(t_tree **parent, void (*del)(void *, size_t));
 int		tt_tree_h(t_tree *node);
 t_tree	*tt_tree_new(const void *content, size_t content_size);
-void	tt_tree_iter_ord(t_tree **head, void (*f)(t_tree *node));
-void	tt_tree_iter_rev(t_tree **head, void (*f)(t_tree *node));
+void	tt_tree_iter_ord(t_tree *head, void (*f)(t_tree *node));
+void	tt_tree_iter_rev(t_tree *head, void (*f)(t_tree *node));
 
 /*
 ** LISTS
