@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tree_h.c                                        :+:      :+:    :+:   */
+/*   tt_tree_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/03/20 16:33:11 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/20 16:37:02 by mwilk            ###   ########.fr       */
+/*   Created: 2015/03/20 14:16:17 by mwilk             #+#    #+#             */
+/*   Updated: 2015/03/22 20:11:11 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tree_h(t_tree *node)
+t_tree	*ft_tree_new(void const *content, size_t content_size)
 {
-	int	h;
-	int	left_h;
-	int	right_h;
-	int	max;
+	t_tree	*node;
 
-	h = 0;
-	if (node)
+	if(!(node = (t_tree*)malloc(sizeof(t_tree))))
+		return (NULL);
+	if (content)
 	{
-		left_h = ft_tree_h(node->left);
-		right_h = ft_tree_h(node->right);
-		max = (left_h > right_h) ? left_h : right_h;
-		h = 1 + max;
+		if (!(content = (void *)malloc(content_size)))
+			return (NULL);
+		node->content = ft_memmove(node->content, content, content_size);
 	}
-	return (h);
+	else
+		node->content = NULL;
+	node->content_size = !content ? 0 : content_size;
+	node->left = NULL;
+	node->right = NULL;
+	return (node);
 }
