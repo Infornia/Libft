@@ -6,13 +6,13 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/22 19:30:14 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/22 19:33:10 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/22 19:55:12 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		tt_intlen.c(int nb)
+int		tt_intlen(int nb)
 {
 	int		i;
 
