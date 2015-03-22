@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/03/20 16:43:57 by mwilk            ###   ########.fr        #
+#    Updated: 2015/03/22 19:34:26 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRC = ft_atoi.c \
 	  ft_tolower.c ft_toupper.c \
 	  get_next_line.c \
 	  ft_tree_new.c ft_tree_del.c ft_tree_h.c ft_tree_add.c \
-
+	  tt_intlen.c \
 
 all: $(NAME)
 
