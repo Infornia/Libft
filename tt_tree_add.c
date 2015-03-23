@@ -17,7 +17,7 @@ static t_tree	*left_rot(t_tree *parent)
 	t_tree	*tmp;
 
 	tmp = parent->left;
-	parent->left = parent->right;
+	parent->left = tmp->right;
 	tmp->right = parent;
 	return (tmp);
 }
@@ -27,7 +27,7 @@ static t_tree	*right_rot(t_tree *parent)
 	t_tree	*tmp;
 
 	tmp = parent->right;
-	parent->right = parent->left;
+	parent->right = tmp->left;
 	tmp->left = parent;
 	return (tmp);
 }
@@ -82,7 +82,7 @@ t_tree		*tt_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *))
 	}
 	else if ((*cmp)(node->content, root->content) > 0)
 	{
-		root->left = tt_tree_add(root->right, node, cmp);
+		root->right = tt_tree_add(root->right, node, cmp);
 		root = balance(root);
 	}
 	return (root);
