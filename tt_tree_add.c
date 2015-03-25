@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/20 14:16:06 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/22 20:22:09 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/25 18:06:59 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static t_tree	*right_rot(t_tree *parent)
 	return (tmp);
 }
 
-static int	get_diff(t_tree *node)
+static int		get_diff(t_tree *node)
 {
 	int		left_h;
 	int		right_h;
@@ -71,7 +71,8 @@ static t_tree	*balance(t_tree *node)
 	return (node);
 }
 
-t_tree		*tt_tree_add(t_tree *root, t_tree *node, int (*cmp)(void *, void *))
+t_tree			*tt_tree_add
+	(t_tree *root, t_tree *node, int (*cmp)(void *, void *))
 {
 	if (root == NULL)
 		return (node);

@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/03/20 14:16:17 by mwilk             #+#    #+#             */
-/*   Updated: 2015/03/22 20:20:21 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/25 18:04:34 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_tree	*tt_tree_new(void const *content, size_t content_size)
 {
 	t_tree	*node;
 
-	if(!(node = (t_tree*)malloc(sizeof(t_tree))))
+	if (!(node = (t_tree*)malloc(sizeof(t_tree))))
 		return (NULL);
 	if (content)
 	{
