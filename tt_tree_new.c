@@ -20,7 +20,7 @@ t_tree	*tt_tree_new(void const *content, size_t content_size)
 		return (NULL);
 	if (content)
 	{
-		if (!(content = (void *)malloc(content_size)))
+		if (!(node->content = (void *)malloc(content_size)))
 			return (NULL);
 		node->content = ft_memmove(node->content, content, content_size);
 	}
