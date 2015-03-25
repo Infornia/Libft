@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 22:06:49 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/09 22:28:57 by mwilk            ###   ########.fr       */
+/*   Updated: 2015/03/25 16:48:34 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmap(const char *s, char (*f)(char))
 	if (s == NULL || f == NULL)
 		return (NULL);
 	i = 0;
-	str = (char *)malloc((strlen(s) + 1) * sizeof(char));
+	str = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
 	while (s[i])
 	{
 		str[i] = f(s[i]);
