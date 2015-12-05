@@ -18,7 +18,7 @@ CFLAGS = -Wall -Wextra -Werror
 INC_PATH = includes/
 OBJ_PATH = obj/
 OBJ = $(SRC:.c=.o)
-SRC = ft_atoi.c \
+SRC = ft_atoi.c ft_abs.c \
 	  ft_bzero.c \
 	  ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c ft_isdigit.c \
 	  ft_isgraph.c ft_islower.c ft_isprint.c ft_isspace.c ft_isupper.c \

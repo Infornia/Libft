@@ -73,6 +73,7 @@ int				tt_intlen(int nb);
 ** DIVERS  O.O
 */
 int				ft_atoi(const char *str);
+int				ft_abs(int c);
 char			*ft_itoa(int c);
 void			ft_bzero(void *str, size_t n);
 void			*ft_realloc(void *ptr, size_t old, size_t size);
