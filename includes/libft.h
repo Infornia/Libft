@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <sys/types.h>
 # include <sys/uio.h>
+# include <fcntl.h>
 
 # define MIN(x, y)	(x < y) ? x : y
 # define MAX(x, y)	(x > y) ? x : y

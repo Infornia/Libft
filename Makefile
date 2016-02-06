@@ -39,6 +39,7 @@ SRC = ft_atoi.c ft_abs.c \
 	  ft_strtrim.c ft_realloc.c \
 	  ft_tolower.c ft_toupper.c \
 	  get_next_line.c \
+	  pel.c pstr.c pchar.c \
 	  tt_tree_new.c tt_tree_del.c tt_tree_h.c tt_tree_add.c \
 	  tt_tree_iter_ord.c tt_tree_iter_rev.c \
 	  tt_intlen.c \
