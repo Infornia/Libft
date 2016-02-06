@@ -32,6 +32,8 @@
 void			pel(const char *s);
 void			pstr(const char *s);
 void			pchar(char c);
+void			pnbl(const char *c);
+void			pnbr(int c);
 void			ft_puts(const char *s);
 float			tt_sqrt(int x);
 int				tt_ps(char *s, int ret);

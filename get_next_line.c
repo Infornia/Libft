@@ -62,5 +62,5 @@ int				get_next_line(const int fd, char **line)
 	if ((mother_cutter = ft_strchr(to_red[fd], '\n')))
 		return (send_cut_keep(line, &to_red[fd], mother_cutter));
 	freedom(&to_red[fd], line);
-	return (ft_strlen(*line) > 0);
+	return (ft_strlen(*line));
 }
