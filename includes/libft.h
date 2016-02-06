@@ -29,6 +29,10 @@
 ** TT_FUNCTIONS
 */
 
+void			pel(const char *s);
+void			pstr(const char *s);
+void			pchar(char c);
+void			ft_puts(const char *s);
 float			tt_sqrt(int x);
 int				tt_ps(char *s, int ret);
 int				tt_puterr(char *s, char *s2, int ret);
@@ -61,6 +65,13 @@ void			tt_tree_iter_rev(t_tree *head, void (*f)(t_tree *node));
 /*
 ** LISTS
 */
+typedef struct	s_gnl
+{
+	char			*line;
+	int				fd;
+	struct s_list	*next;
+}				t_gnl;
+
 typedef struct	s_list
 {
 	void			*content;
