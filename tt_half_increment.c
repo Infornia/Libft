@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   tt_half_increment.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 14:12:20 by mwilk             #+#    #+#             */
-/*   Updated: 2016/02/01 23:29:44 by mwilk            ###   ########.fr       */
+/*   Created: 2016/01/13 18:06:45 by mwilk             #+#    #+#             */
+/*   Updated: 2016/01/13 18:07:40 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_abs(int i)
+void	tt_half_increment(int *x, int *y)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	if (*x == *y && ++(*x))
+		*y = 0;
+	else if (*x > *y)
+		tt_swapnb(x, y);
+	else if (*y > *x && ++(*x))
+		tt_swapnb(x, y);
 }

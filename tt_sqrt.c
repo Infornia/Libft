@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   tt_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 14:12:20 by mwilk             #+#    #+#             */
-/*   Updated: 2016/02/01 23:29:44 by mwilk            ###   ########.fr       */
+/*   Created: 2016/01/13 18:06:45 by mwilk             #+#    #+#             */
+/*   Updated: 2016/01/13 18:47:31 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_abs(int i)
+float	tt_sqrt(int x)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	int		prev;
+	int		k;
+	int		kmax;
+	float	s;
+
+	prev = 0;
+	k = -1;
+	kmax = 1000;
+	s = 1;
+	while (++k < kmax)
+	{
+		prev = s;
+		s = (s + x / s) / 2;
+		if (prev == s)
+			break ;
+	}
+	return (s);
 }

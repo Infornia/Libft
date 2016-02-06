@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   tt_puterr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mwilk <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/11/05 14:12:20 by mwilk             #+#    #+#             */
-/*   Updated: 2016/02/01 23:29:44 by mwilk            ###   ########.fr       */
+/*   Created: 2016/01/13 18:06:45 by mwilk             #+#    #+#             */
+/*   Updated: 2016/01/13 18:08:31 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_abs(int i)
+int		tt_puterr(char *s, char *s2, int ret)
 {
-	if (i < 0)
-		return (-i);
-	return (i);
+	ft_putstr("Error: ");
+	if (s)
+		ft_putendl(s);
+	if (s2)
+		ft_putendl(s2);
+	return (ret);
 }
