@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2015/03/22 20:08:57 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/11 00:13:34 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,11 +56,11 @@ $(NAME):
 
 clean:
 	@/bin/rm -rf $(OBJ_PATH)
-	@echo "\033[36mT.T Miss you object files T.T \033[0m"
+	@echo "\033[36mT.T Miss you lib-object files T.T \033[0m"
 
 fclean: clean
 	@/bin/rm -rf $(NAME)
-	@echo "\033[36m X.x Bye Bye compiled files >_< \033[0m"
+	@echo "\033[36m X.x Bye Bye lib-compiled files >_< \033[0m"
 
 re: fclean all
 
