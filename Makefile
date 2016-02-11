@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/02/11 00:13:34 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/11 19:49:12 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,7 @@ SRC = ft_atoi.c ft_abs.c \
 	  ft_strtrim.c ft_realloc.c \
 	  ft_tolower.c ft_toupper.c \
 	  get_next_line.c \
-	  tt_pchar.c tt_pnbr.c tt_pnbl.c tt_pel.c tt_pstr.c tt_puts.c \
+	  tt_pchar.c tt_pnbr.c tt_pnbl.c tt_pel.c tt_ps.c tt_pstr.c tt_puts.c \
 	  tt_tree_new.c tt_tree_del.c tt_tree_h.c tt_tree_add.c \
 	  tt_tree_iter_ord.c tt_tree_iter_rev.c \
 	  tt_intlen.c \
