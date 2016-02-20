@@ -6,18 +6,23 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/02/17 19:44:05 by mwilk            ###   ########.fr        #
+#    Updated: 2016/02/17 22:05:57 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
+## PROJECT
+
 NAME = libft.a
 
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-INC_PATH = includes/
-OBJ_PATH = obj/
-OBJ = $(SRC:.c=.o)
+## COMPILATEUR
+
+OS = $(shell uname -s)
+CC = clang
+FLAGS = -Wall -Wextra -Werror
+
+## FILES
+
 SRC = ft_atoi.c ft_abs.c \
 	  ft_bzero.c \
 	  ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isblank.c ft_isdigit.c \
@@ -39,30 +44,47 @@ SRC = ft_atoi.c ft_abs.c \
 	  ft_strtrim.c ft_realloc.c \
 	  ft_tolower.c ft_toupper.c \
 	  get_next_line.c \
-	  tt_pchar.c tt_pnbr.c tt_pnbl.c \
+	  tt_pchar.c tt_perr.c tt_pnbr.c tt_pnbl.c \
 	  tt_pel.c tt_ps.c tt_pstr.c tt_puts.c \
 	  tt_tree_new.c tt_tree_del.c tt_tree_h.c tt_tree_add.c \
 	  tt_tree_iter_ord.c tt_tree_iter_rev.c \
 	  tt_intlen.c \
 
+INC =  -I ./
+INC += -I ./includes/
+INC += -I minilibx/
+
+OBJ = $(SRC:.c=.o)
+
+LIB =  -L libft -lft
+LIB += -L minilibx/ -lmlx -framework OpenGl -framework Appkit
+
+## RULES
+
 all: $(NAME)
 
-$(NAME):
-	@$(CC) $(CFLAGS) -c $(SRC) -I $(INC_PATH)
+$(NAME): $(OBJ)
+	@echo "\033[32m (>0.0)>\t./|Invocation|\.\t<(O.O<) \033[0m"
+	@$(CC) $(FLAGS) -c $(SRC) $(INC)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
-	@mkdir $(OBJ_PATH)
-	@mv $(OBJ) $(OBJ_PATH)
-	@echo "\033[35m <(^.^<) WOW ! Such Library ! Amaze ! (>^o^)> \033[0m"
+	@echo "\033[33m <(O.O<)\tWOW ! Very Library ! Amaze !\t(>^o^)> \033[0m"
 
 clean:
-	@/bin/rm -rf $(OBJ_PATH)
-	@echo "\033[36mT.T Miss you lib-object files T.T \033[0m"
+	@rm -rf $(OBJ)
+	@echo "\033[36m\tT.T Miss you lib-object files T.T\t\033[0m"
 
-fclean: clean
-	@/bin/rm -rf libft.a
-	@echo "\033[36m X.x Bye Bye lib-compiled files >_< \033[0m"
+fclean:
+	@rm -rf $(OBJ)
+	@echo "\033[36m\tT.T Miss you lib-object files T.T\t\033[0m"
+	@rm -rf $(NAME)
+	@echo "\033[36m\tX.x Bye Bye lib-compiled files >_<\t\033[0m"
+
+%.o:%.c
+	@echo "\033[0;34;44m<(O.o)>\t\t$@\t\t<(o.O)>\033[0m"
+	@$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all normal clean fclean re
+
