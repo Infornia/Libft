@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/02/11 19:55:28 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/03/21 18:32:55 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,17 @@ t_list			*ft_lstnew(void const *content, size_t content_size);
 int				tt_intlen(int nb);
 
 /*
-** DIVERS  O.O
+** CONVERT
 */
+
 int				ft_atoi(const char *str);
 int				ft_abs(int c);
 char			*ft_itoa(int c);
+unsigned char	*ft_ctob(int c);
+
+/*
+** DIVERS  O.O
+*/
 void			ft_bzero(void *str, size_t n);
 void			*ft_realloc(void *ptr, size_t old, size_t size);
 
