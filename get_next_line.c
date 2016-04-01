@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/13 14:26:26 by mwilk             #+#    #+#             */
-/*   Updated: 2015/02/04 19:30:32 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/04/01 23:21:50 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int		send_cut_keep(char **line, char **to_red, char *mother_cutter)
 	*line = *to_red;
 	*mother_cutter = '\0';
 	*to_red = ft_strdup(mother_cutter + 1);
-	return (1);
+	return (ft_strlen(*line));
 }
 
 static	void	ft_strjoin_gnl(char **to_red, char *bull)
