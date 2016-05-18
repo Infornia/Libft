@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/04/01 23:30:54 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/05/09 16:27:01 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define MIN(x, y)	(x < y) ? x : y
 # define MAX(x, y)	(x > y) ? x : y
 # define BUFF_SIZE 16
+# define NBYTE 128
 
 /*
 ** TT_FUNCTIONS
@@ -35,6 +36,7 @@ void			pchar(char c);
 void			pnbl(const char *c);
 void			pnbr(int c);
 void			ft_puts(const char *s);
+unsigned char	*tt_ctob(int c);
 float			tt_sqrt(int x);
 int				tt_ps(char *s, int ret);
 int				tt_perr(char *s, char *s2, int ret);
@@ -122,8 +124,10 @@ int				ft_isascii(int c);
 int				ft_isblank(int c);
 int				ft_isdigit(int c);
 int				ft_isgraph(int c);
+int				ft_islower(int c);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
+int				ft_isupper(int c);
 
 /*
 ** FT_MEM
@@ -172,7 +176,7 @@ char			**ft_strsplit(const char *s, char c);
 char			*ft_strstr(const char *s1, const char *s2);
 char			*ft_strsub(const char *s, unsigned int start, size_t len);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
-size_t			ft_strlen(const char *str);
+int				ft_strlen(const char *str);
 char			*ft_strncat(char *dst, const char *src, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strncpy(char *dst, const char *src, size_t n);
@@ -194,5 +198,5 @@ int				ft_toupper(int c);
 ** GNL
 */
 
-int				get_next_line(const int fd, char **line);
+int			get_next_line(const int fd, char **line);
 #endif

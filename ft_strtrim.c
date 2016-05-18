@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/09 18:25:22 by mwilk             #+#    #+#             */
-/*   Updated: 2014/12/06 17:21:12 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/05/09 16:45:09 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,6 @@ char	*ft_strtrim(const char *s)
 		while (s[j - 1] == ' ' || s[j - 1] == '\n' || s[j - 1] == '\t')
 			j--;
 	}
-	ret = ft_strsub(s, i, j - i);
+	ret = ft_strsub(s, i, (size_t)(j - i));
 	return (ret);
 }

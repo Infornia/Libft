@@ -6,18 +6,18 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 16:51:34 by mwilk             #+#    #+#             */
-/*   Updated: 2014/11/08 14:18:34 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/05/09 16:27:33 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-size_t	ft_strlen(const char *str)
+int		ft_strlen(const char *s)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
-	while (str[i])
-		i++;
+	while (*s++)
+		++i;
 	return (i);
 }

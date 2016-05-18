@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/13 14:26:26 by mwilk             #+#    #+#             */
-/*   Updated: 2016/04/01 23:21:50 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/05/09 16:32:04 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,13 @@ int				get_next_line(const int fd, char **line)
 		return (-1);
 	if (!to_red[fd])
 	{
-		if ((ret = read(fd, bull, BUFF_SIZE)) < 1)
+		if ((ret = (int)read(fd, bull, BUFF_SIZE)) < 1)
 			return (ret);
 		bull[ret] = 0;
 		to_red[fd] = ft_strdup(bull);
 	}
-	while (!ft_strchr(to_red[fd], '\n') && (ret = read(fd, bull, BUFF_SIZE)))
+	while (!ft_strchr(to_red[fd], '\n')
+		&& (ret = (int)read(fd, bull, BUFF_SIZE)))
 	{
 		bull[ret] = 0;
 		ft_strjoin_gnl(&to_red[fd], bull);
