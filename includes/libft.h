@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/05/09 16:27:01 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/05/19 13:16:58 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,36 @@
 # define MIN(x, y)	(x < y) ? x : y
 # define MAX(x, y)	(x > y) ? x : y
 # define BUFF_SIZE 16
-# define NBYTE 128
+
+#define RED		"\x1b[31m"
+#define GRN		"\x1b[32m"
+#define YELLOW	"\x1b[33m"
+#define BLUE	"\x1b[34m"
+#define MAG		"\x1b[35m"
+#define CYAN	"\x1b[36m"
+#define RESET	"\x1b[0m"
 
 /*
 ** TT_FUNCTIONS
 */
 
-void			pel(const char *s);
-void			pstr(const char *s);
-void			pchar(char c);
-void			pnbl(const char *c);
-void			pnbr(int c);
-void			ft_puts(const char *s);
-unsigned char	*tt_ctob(int c);
+int				tt_ens(int nb, char *s, int ret);
+int				tt_es(char *s, int ret);
+int				tt_esn(char *s, int nb, int ret);
+int				tt_ess(char *s, char *s2, int ret);
+int				tt_gnl(int fd, char **line);
+int				tt_pc(char c);
+int				tt_pl(char *s);
+int				tt_pn(int c);
+int				tt_pns(int c, char *s);
+int				tt_pnl(int c, char *s);
+int				tt_ps(char *s);
+int				tt_psn(char *s, int nb);
+int				tt_psns(char *s, int nb, char *s2);
+int				tt_pssn(char *s, char *s2, int nb);
+size_t			tt_slen(char *s);
+
 float			tt_sqrt(int x);
-int				tt_ps(char *s, int ret);
-int				tt_perr(char *s, char *s2, int ret);
 char			**tt_malloc_tab(int size_1, int size_2);
 int				**tt_malloc_intab(int size_1, int size_2);
 void			tt_printab(char **t);
@@ -124,10 +138,9 @@ int				ft_isascii(int c);
 int				ft_isblank(int c);
 int				ft_isdigit(int c);
 int				ft_isgraph(int c);
-int				ft_islower(int c);
+int				ft_isnumber(char *s);
 int				ft_isprint(int c);
 int				ft_isspace(int c);
-int				ft_isupper(int c);
 
 /*
 ** FT_MEM
@@ -176,7 +189,7 @@ char			**ft_strsplit(const char *s, char c);
 char			*ft_strstr(const char *s1, const char *s2);
 char			*ft_strsub(const char *s, unsigned int start, size_t len);
 size_t			ft_strlcat(char *dst, const char *src, size_t size);
-int				ft_strlen(const char *str);
+size_t			ft_strlen(const char *str);
 char			*ft_strncat(char *dst, const char *src, size_t n);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 char			*ft_strncpy(char *dst, const char *src, size_t n);
@@ -198,5 +211,5 @@ int				ft_toupper(int c);
 ** GNL
 */
 
-int			get_next_line(const int fd, char **line);
+int				get_next_line(const int fd, char **line);
 #endif
