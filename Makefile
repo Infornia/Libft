@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/06/15 14:54:27 by mwilk            ###   ########.fr        #
+#    Updated: 2016/06/15 15:07:53 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ FLAGS = -Wall -Wextra -Werror
 
 ## FILES
 
-SRC = $(shell ls -1 src)
+SRC = $(shell ls -1 sources)
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 
 INC =  -I ./
