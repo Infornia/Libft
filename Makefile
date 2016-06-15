@@ -6,7 +6,7 @@
 #    By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/09 16:17:56 by mwilk             #+#    #+#              #
-#    Updated: 2016/05/11 00:52:47 by mwilk            ###   ########.fr        #
+#    Updated: 2016/06/15 14:54:27 by mwilk            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ $(NAME) :	obj $(OBJ)
 			@ranlib $(NAME)
 			@echo "\033[33m <(O.O<)\tWOW ! Very Library ! Amaze !\t(>^o^)> \033[0m"
 
-obj/%.o:	src/%.c
+obj/%.o:	sources/%.c
 			@$(CC) $(FLAGS) $(INC) -o $@ -c $<
 			@echo "\033[0;34;44m<(O.o)>\t\t$@\t\t<(o.O)>\033[0m"
 
