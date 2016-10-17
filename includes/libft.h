@@ -6,7 +6,7 @@
 /*   By: mwilk <mwilk@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/04 14:27:02 by mwilk             #+#    #+#             */
-/*   Updated: 2016/06/15 15:01:55 by mwilk            ###   ########.fr       */
+/*   Updated: 2016/10/17 14:43:13 by mwilk            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <sys/uio.h>
 # include <fcntl.h>
 
-# define MIN(x, y)	(x < y) ? x : y
-# define MAX(x, y)	(x > y) ? x : y
+# define MIN(a, b)		((a) < (b) ? (a) : (b))
+# define MAX(a, b)		((a) < (b) ? (b) : (a))
 # define BUFF_SIZE 16
 
 #define RED		"\x1b[31m"
